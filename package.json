@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/LuudJanssen/sos-network-layers/issues"
   },
-  "homepage": "https://github.com/LuudJanssen/sos-network-layers#readme"
+  "homepage": "https://github.com/LuudJanssen/sos-network-layers#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.10.3"
+  }
 }
