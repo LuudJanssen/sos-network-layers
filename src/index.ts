@@ -1,4 +1,4 @@
-import { Game } from './Game/Game'
+import { Game } from "./Game/Game"
 
 const gameElement = document.body
 const game = new Game()

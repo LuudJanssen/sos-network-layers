@@ -1,12 +1,12 @@
-import { Application, utils, Rectangle } from 'pixi.js'
-import { pixiSettings } from './pixiSettings'
-import { CanvasContainer } from './CanvasContainer'
+import { Application, Rectangle, utils } from "pixi.js"
+import { CanvasContainer } from "./CanvasContainer"
+import { pixiSettings } from "./pixiSettings"
 
 /**
  * The App that shows the canvas
  */
 export class Canvas extends Application {
-    container: CanvasContainer
+    private container: CanvasContainer
 
     constructor() {
 
@@ -19,10 +19,10 @@ export class Canvas extends Application {
 
     /**
      * Binds the canvas to an element
-     * 
+     *
      * @param element The element to bind to
      */
-    bindTo(element: HTMLElement) {
+    public bindTo(element: HTMLElement) {
         this.container = new CanvasContainer(element)
         this.container.appendCanvas(this.view)
         this.container.onResize(() => this.resizeToContainer())
@@ -30,9 +30,9 @@ export class Canvas extends Application {
     }
 
     /**
-     * Resizes the canvas to the element that was  
+     * Resizes the canvas to the element that was
      */
-    resizeToContainer() {
+    public resizeToContainer() {
         const { width, height } = this.container.getDimensions()
         this.renderer.resize(width, height)
     }

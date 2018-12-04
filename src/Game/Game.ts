@@ -1,7 +1,7 @@
-import { Canvas } from '../Canvas/Canvas'
+import { Canvas } from "../Canvas/Canvas"
 
 export class Game {
-    canvas: Canvas
+    private canvas: Canvas
 
     constructor() {
         this.canvas = new Canvas()
@@ -9,10 +9,10 @@ export class Game {
 
     /**
      * Binds the game to an HTML element
-     * 
+     *
      * @param element The element you want the game to bind to
      */
-    bindTo(element: HTMLElement) {
+    public bindTo(element: HTMLElement) {
         this.canvas.bindTo(element)
     }
 }
