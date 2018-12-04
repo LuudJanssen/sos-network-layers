@@ -7,7 +7,12 @@ export class Game {
         this.canvas = new Canvas()
     }
 
-    bindTo(element) {
-
+    /**
+     * Binds the game to an HTML element
+     * 
+     * @param element The element you want the game to bind to
+     */
+    bindTo(element: HTMLElement) {
+        this.canvas.bindTo(element)
     }
 }
