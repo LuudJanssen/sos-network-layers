@@ -18,6 +18,7 @@ A game developed for the Games For Design &amp; Play II course at the TU/e promo
 2. Move into the repository: `cd sos-network-layers`
 3. Install all the dependencies: `npm install`
 4. Start the bundler and development server ([ParcelJS](https://parceljs.org/)): `npm start`
+5. In your browser, go to [http://localhost:1234/]()
 
 ## Build
 1. With the installation finished, instead of step 4, execute: `npm run build`
