@@ -5,6 +5,7 @@ export class Game {
 
     constructor() {
         this.canvas = new Canvas()
+        this.canvas.startIntroduction()
     }
 
     /**

@@ -1,4 +1,4 @@
-import { ISize } from "../shared/interfaces/Size"
+import { ISize } from "../shared/interfaces/ISize"
 
 export class CanvasContainer {
     public element: HTMLElement

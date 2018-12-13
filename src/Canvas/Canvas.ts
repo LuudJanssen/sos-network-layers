@@ -1,5 +1,6 @@
 import { Application, Rectangle, utils } from "pixi.js"
 import { CanvasContainer } from "./CanvasContainer"
+import { Introduction } from "./Introduction/Introduction"
 import { pixiSettings } from "./pixiSettings"
 
 /**
@@ -35,5 +36,9 @@ export class Canvas extends Application {
     public resizeToContainer() {
         const { width, height } = this.container.getDimensions()
         this.renderer.resize(width, height)
+    }
+
+    public startIntroduction() {
+        this.stage.addChild(new Introduction())
     }
 }
