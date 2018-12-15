@@ -4,8 +4,6 @@
   "description": "A game developed for the Games For Design &amp; Play II course at the TU/e promoting studying Computer Science",
   "main": "dist/index.html",
   "scripts": {
-    "start": "parcel src/index.html",
-    "build": "parcel build src/index.html --experimental-scope-hoisting",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,14 +17,8 @@
   },
   "homepage": "https://github.com/LuudJanssen/sos-network-layers#readme",
   "devDependencies": {
-    "@types/pixi.js": "^4.8.4",
-    "@types/webpack-env": "^1.13.6",
-    "parcel-bundler": "^1.10.3",
     "tslint": "^5.11.0",
     "typescript": "^3.2.1"
   },
-  "dependencies": {
-    "css-element-queries": "^1.1.1",
-    "pixi.js": "^4.8.2"
-  }
+  "dependencies": {}
 }
