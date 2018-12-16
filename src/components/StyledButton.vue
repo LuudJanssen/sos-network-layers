@@ -31,7 +31,8 @@ button {
     font-size: 1em;
     transition: all 50ms;
     letter-spacing: 1px;
-    color: rgba(0,0,0,0.87)
+    color: rgba(0,0,0,0.87);
+    cursor: pointer;
 }
 
 button:active {
