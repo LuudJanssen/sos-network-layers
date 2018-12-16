@@ -1,9 +1,9 @@
 <template>
-    <button>{{ text }}</button>
+    <button @click="$emit('click')">{{ text }}</button>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue, Emit } from 'vue-property-decorator'
 
 @Component
 export default class StyledButton extends Vue {
@@ -16,6 +16,7 @@ button {
     top: 0;
     position: relative;
     padding: 8px 16px;
+    margin: 4px 8px;
     background-color: white;
     border: none;
     border-bottom: solid 4px rgba(0,0,0,0.2);

@@ -1,6 +1,7 @@
 <template>
   <div class="introduction">
-    <StyledButton text="Start Physicial Layer Game"/>
+    <StyledButton @click="$emit('startPhysicalLayer')" text="Start Physicial Layer Game"/>
+    <StyledButton @click="$emit('startApplicationLayer')" text="Start Application Layer Game"/>
   </div>
 </template>
 

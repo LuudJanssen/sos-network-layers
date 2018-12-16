@@ -1,7 +1,11 @@
 <template>
   <div id="game">
-    <Introduction v-if="mode === GameMode.Introduction" />
+    <Introduction v-if="mode === GameMode.Introduction" 
+                  @startPhysicalLayer="mode = GameMode.PhysicalLayer" 
+                  @startApplicationLayer="mode = GameMode.ApplicationLayer"/>
+
     <PhysicalLayer v-if="mode === GameMode.PhysicalLayer"/>
+    <ApplicationLayer v-if="mode === GameMode.ApplicationLayer"/>
   </div>
 </template>
 
@@ -9,16 +13,19 @@
 import { Component, Vue } from 'vue-property-decorator'
 import Introduction from './components/Introduction.vue'
 import PhysicalLayer from './components/PhysicalLayer.vue'
+import ApplicationLayer from './components/ApplicationLayer.vue'
 
 enum GameMode {
   Introduction,
   PhysicalLayer,
+  ApplicationLayer,
 }
 
 @Component({
   components: {
     Introduction,
     PhysicalLayer,
+    ApplicationLayer,
   },
 })
 export default class Game extends Vue {
