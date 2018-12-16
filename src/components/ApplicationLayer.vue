@@ -1,3 +1,7 @@
+<!--
+  This is the applciation layer component which contains the application layer game
+-->
+
 <template>
     <div class="application-layer">
         <h1>Application Layer</h1>
@@ -5,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 
 @Component({})
 export default class ApplicationLayer extends Vue {}

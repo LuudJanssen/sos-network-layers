@@ -1,3 +1,7 @@
+<!--
+  This is the component for the physical layer, which contains the physical layer game.
+-->
+
 <template>
     <div class="physical-layer">
         <h1>This is the physical layer</h1>
