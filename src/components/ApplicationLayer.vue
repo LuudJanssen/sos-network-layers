@@ -12,18 +12,18 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import NavBar from './components/NavBar.vue'
-import Form from './components/Form.vue'
+import NavBar from 'NavBar.vue'
+import FormS from 'FormS.vue'
 
 export enum AppComponents {
   NavBar,
-  Form,
+  FormS,
 }
 
 @Component({
   components: {
     NavBar,
-    Form,
+    FormS,
   },
 })
 
