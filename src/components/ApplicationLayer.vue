@@ -5,14 +5,36 @@
 <template>
     <div class="application-layer">
         <h1>Application Layer</h1>
+         <NavBar/>
+         <Form/>
     </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import NavBar from './components/NavBar.vue'
+import Form from './components/Form.vue'
 
-@Component({})
-export default class ApplicationLayer extends Vue {}
+export enum AppComponents {
+  NavBar,
+  Form,
+}
+
+@Component({
+  components: {
+    NavBar,
+    Form,
+  },
+})
+
+export default class ApplicationLayer extends Vue {
+  public data() {
+    return {
+      elements: AppComponents.NavBar,
+      AppComponents,
+    }
+  }
+}
 </script>
 
 <style scoped>

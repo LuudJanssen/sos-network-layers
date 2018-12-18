@@ -13,7 +13,7 @@
   <input type="text" name="latitude">
   Emergency priority:<br>
   <input type="radio" name="low" value="low" checked> Low<br>
-  <input type="radio" name="neutral" value="neutral"> Neutral<br>
+  <input type="radio" name="medium" value="medium"> Medium<br>
   <input type="radio" name="high" value="high"> High
 </form> 
 
