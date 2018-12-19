@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import Vue from 'vue'
 
 export default class PhysicalLayer extends Vue {}
 </script>

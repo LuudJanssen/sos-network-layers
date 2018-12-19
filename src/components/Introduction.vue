@@ -10,21 +10,17 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+<script>
 import StyledButton from './StyledButton.vue'
 import { GameLayers } from '../Game.vue'
 
-@Component({
-  components: {
-    StyledButton,
-  },
-})
-export default class Introduction extends Vue {
-  public data() {
+export default {
+  name: 'Introduction',
+  data() {
     return { GameLayers }
   }
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -21,41 +21,32 @@
 </template>
 
 <!-- This is the TypeScript part of the Game component. -->
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+<script>
+import Vue from 'vue'
 import Introduction from './components/Introduction.vue'
 import PhysicalLayer from './components/PhysicalLayer.vue'
 import ApplicationLayer from './components/ApplicationLayer.vue'
 
 // We create an enum with all the game's layers.
-export enum GameLayers {
+export const GameLayers = {
   Introduction,
   PhysicalLayer,
   ApplicationLayer,
 }
 
-/**
- * This is the component decorator, this ensures the Introduction, PhysicalLayer and ApplicationLayer components can be
- * used in the template.
- */
-@Component({
-  components: {
-    Introduction,
-    PhysicalLayer,
-    ApplicationLayer,
-  },
-})
+console.log(Introduction)
 
 /**
  * This is the component code itself. It only exposes the current layer and all game layers to the template.
  */
-export default class Game extends Vue {
-  public data() {
+export default {
+  name: 'Game',
+  data() {
     return {
       layer: GameLayers.Introduction,
       GameLayers,
     }
-  }
+  },
 }
 </script>
 

@@ -8,11 +8,10 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import Vue from 'vue'
 
-@Component
 export default class StyledButton extends Vue {
-  @Prop() private text!: string
+    public props = ['text']
 }
 </script>
 
