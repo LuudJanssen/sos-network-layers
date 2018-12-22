@@ -2,16 +2,16 @@
   The styled button component creates a nicely styled button to ensure similar usage / style across the application. It
   has a property "text" with the button text and emits the "click" event. 
 -->
-
 <template>
     <button @click="$emit('click')">{{ text }}</button>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-
-export default class StyledButton extends Vue {
-    public props = ['text']
+<script>
+export default {
+    name: 'StyledButton',
+    props: {
+        text: String
+    }
 }
 </script>
 

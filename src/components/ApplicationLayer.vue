@@ -1,17 +1,16 @@
 <!--
   This is the applciation layer component which contains the application layer game
 -->
-
 <template>
     <div class="application-layer">
         <h1>Application Layer</h1>
     </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-
-export default class ApplicationLayer extends Vue {}
+<script>
+export default {
+  name: 'ApplicationLayer'
+}
 </script>
 
 <style scoped>

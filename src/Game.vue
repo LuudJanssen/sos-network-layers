@@ -17,12 +17,13 @@
     <!-- We show the right layer depending on the layer value -->
     <PhysicalLayer v-if="layer === GameLayers.PhysicalLayer"/>
     <ApplicationLayer v-if="layer === GameLayers.ApplicationLayer"/>
+
+    {{ layer }}
   </div>
 </template>
 
 <!-- This is the TypeScript part of the Game component. -->
 <script>
-import Vue from 'vue'
 import Introduction from './components/Introduction.vue'
 import PhysicalLayer from './components/PhysicalLayer.vue'
 import ApplicationLayer from './components/ApplicationLayer.vue'
@@ -34,13 +35,12 @@ export const GameLayers = {
   ApplicationLayer,
 }
 
-console.log(Introduction)
-
 /**
  * This is the component code itself. It only exposes the current layer and all game layers to the template.
  */
 export default {
   name: 'Game',
+  components: GameLayers,
   data() {
     return {
       layer: GameLayers.Introduction,
