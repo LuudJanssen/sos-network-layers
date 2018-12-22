@@ -2,7 +2,6 @@
   This is the introduction component which plays the game introduction for the player and emits the "startLayer" event
   for the Game component to catch and change layers with
 -->
-
 <template>
   <div class="introduction">
     <StyledButton @click="$emit('startLayer', GameLayers.PhysicalLayer)" text="Start Physical Layer Game"/>
@@ -10,18 +9,16 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+<script>
 import StyledButton from './StyledButton.vue'
 import { GameLayers } from '../Game.vue'
 
-@Component({
-  components: {
-    StyledButton,
+export default {
+  name: 'Introduction',
+  components: { 
+    StyledButton 
   },
-})
-export default class Introduction extends Vue {
-  public data() {
+  data() {
     return { GameLayers }
   }
 }

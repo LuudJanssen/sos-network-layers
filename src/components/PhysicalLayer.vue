@@ -1,17 +1,16 @@
 <!--
   This is the component for the physical layer, which contains the physical layer game.
 -->
-
 <template>
     <div class="physical-layer">
         <h1>This is the physical layer</h1>
     </div>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-
-export default class PhysicalLayer extends Vue {}
+<script>
+export default {
+  name: 'PhysicalLayer'
+}
 </script>
 
 <style scoped>
