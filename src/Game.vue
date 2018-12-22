@@ -17,8 +17,6 @@
     <!-- We show the right layer depending on the layer value -->
     <PhysicalLayer v-if="layer === GameLayers.PhysicalLayer"/>
     <ApplicationLayer v-if="layer === GameLayers.ApplicationLayer"/>
-
-    {{ layer }}
   </div>
 </template>
 

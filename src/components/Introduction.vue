@@ -3,21 +3,29 @@
   for the Game component to catch and change layers with
 -->
 <template>
-  <div class="introduction">
-    <StyledButton @click="$emit('startLayer', GameLayers.PhysicalLayer)" text="Start Physical Layer Game"/>
-    <StyledButton @click="$emit('startLayer', GameLayers.ApplicationLayer)" text="Start Application Layer Game"/>
-  </div>
+  <b-container fluid class="introduction">
+    <b-row align-v="center" align-h="center" class="introduction-buttons">
+      <b-col></b-col>
+      <b-col cols="2">
+        <b-button :variant="'primary'" @click="$emit('startLayer', GameLayers.PhysicalLayer)">
+          Start Physical Layer Game
+        </b-button>
+      </b-col>
+      <b-col cols="2">
+        <b-button :variant="'primary'" @click="$emit('startLayer', GameLayers.ApplicationLayer)">
+          Start Application Layer Game
+        </b-button>
+      </b-col>
+      <b-col></b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
-import StyledButton from './StyledButton.vue'
 import { GameLayers } from '../Game.vue'
 
 export default {
   name: 'Introduction',
-  components: { 
-    StyledButton 
-  },
   data() {
     return { GameLayers }
   }
@@ -27,10 +35,11 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .introduction {
-  background-color: blue;
-  width: 100%;
+  background-color: var(--light);
   height: 100%;
-  text-align: center;
-  padding-top: 100px;
+}
+
+.introduction-buttons {
+  height: 100%;
 }
 </style>
