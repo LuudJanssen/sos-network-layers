@@ -5,8 +5,8 @@
 <template>
     <div class="application-layer">
         <h1>Application Layer</h1>
-         <NavBar/>
-         <Form/>
+         <NavBar><NavBar/>
+         
     </div>
 </template>
 

@@ -1,6 +1,6 @@
 
 <template>
-<div id = 'navitems'>
+<div id = 'navItems'>
      <div class="topnav">
         <a class="active" href="#item1">{{item1}}</a>
         <a href="#item2">{{item2}}</a>
@@ -10,16 +10,24 @@
 </div>
 </template>
 
-<script>
-    var navitems = new Vue({
-        el: '#navitems',
-        data: {
-            item1: 'item1',
-            item2: 'item2',
-            item3: 'item3',
-            item4: 'item4',
-        }
-    })
+<script lang = <script lang="ts">
+
+import { Component, Vue } from 'vue-property-decorator'
+
+const navItems = [
+  'item1',
+  'item2',
+  'item3',
+  'item4',
+]
+
+@Component
+export default class NavBar extends Vue {
+  public data() {
+    return { navItems }
+  }
+}
+
 </script>
 
 <style>
