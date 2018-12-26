@@ -12,12 +12,10 @@
 
 <script>
 import NavBar from './NavBar'
-import AppHome from './AppHome'
 export default {
   name: 'ApplicationLayer',
   components: {
-    NavBar,
-    AppHome
+    NavBar
   }
 }
 </script>

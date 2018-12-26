@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Game from './Game.vue'
-import router from './router'
+import router from './components/router.js'
 
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
