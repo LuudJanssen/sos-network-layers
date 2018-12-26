@@ -5,16 +5,19 @@
     <div class="application-layer">
         <h1>Application Layer</h1>
         <NavBar> </NavBar>
+        <router-view />
     </div>
     
 </template>
 
 <script>
 import NavBar from './NavBar'
+import AppHome from './AppHome'
 export default {
   name: 'ApplicationLayer',
   components: {
-    NavBar
+    NavBar,
+    AppHome
   }
 }
 </script>
@@ -26,4 +29,5 @@ export default {
   text-align: center;
   padding-top: 20px;
 }
+
 </style>
