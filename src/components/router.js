@@ -5,7 +5,7 @@ import AppForm from './AppForm.vue'
 
 Vue.use(Router)
 
-export default new router({
+export default new Router({
     routes: [
         {
             path: '/AppHome',
