@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="box">
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
       <b-form-group id="fullName"
                     label="Full Name"
@@ -106,3 +106,12 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.box {
+  width: 60%;
+  height: 100%;
+  padding: 30px;
+  padding-left: 100px;
+}
+</style>
