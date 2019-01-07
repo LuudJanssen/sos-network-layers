@@ -4,12 +4,19 @@
 <template>
     <div class="application-layer">
         <h1>Application Layer</h1>
+        <NavBar> </NavBar>
+        <router-view />
     </div>
+    
 </template>
 
 <script>
+import NavBar from './NavBar'
 export default {
-  name: 'ApplicationLayer'
+  name: 'ApplicationLayer',
+  components: {
+    NavBar
+  }
 }
 </script>
 
@@ -18,6 +25,7 @@ export default {
   width: 100%;
   height: 100%;
   text-align: center;
-  padding-top: 100px;
+  padding-top: 20px;
 }
+
 </style>
