@@ -34,9 +34,11 @@
 <script>
 export default {
   name: 'AppHome',
-  data: {
-    textChange: {
-      color: 'black',
+  data: () => {
+    return {
+      textChange: {
+        color: 'black',
+      }
     }
   }
 }

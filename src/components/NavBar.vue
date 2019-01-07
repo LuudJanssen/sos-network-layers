@@ -29,38 +29,34 @@
 import Vue from 'vue'
 export default Vue.extend({
     name: 'NavBar',
+    data: () => {
+        return {
+            tab1: {
+                opt1: true,
+                opt2: false,
+                opt3: false
 
-    data:
-    {
-        tab1: {
-            opt1: true,
-            opt2: false,
-            opt3: false
+            },
+            tab2: {
+                opt1: true,
+                opt2: false,
+                opt3: false
 
-        },
+            },
+            tab3: {
+                opt1: true,
+                opt2: false,
+                opt3: false
 
-        tab2: {
-            opt1: true,
-            opt2: false,
-            opt3: false
+            },
+            tab4: {
+                opt1: true,
+                opt2: false,
+                opt3: false
 
-        },
-
-        tab3: {
-            opt1: true,
-            opt2: false,
-            opt3: false
-
-        },
-
-        tab4: {
-            opt1: true,
-            opt2: false,
-            opt3: false
-
+            }
         }
     }
-
 })
 </script>
 
