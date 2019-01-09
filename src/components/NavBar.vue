@@ -9,7 +9,7 @@
             </div>
             <div v-bind:class="tab3">
                 <b-nav-item>
-                    <div v-if="opt1=false"> <!--dit aanroepen werkt niet, dus daar moeten we iets anders op verzinnen -->
+                    <div v-if="tab3.opt1===true"> 
                         option1
                     </div>
                     <div v-else>
