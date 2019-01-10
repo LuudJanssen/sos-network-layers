@@ -16,8 +16,11 @@
       <div v-bind:class="tab4">
         <b-nav-item>Tab4</b-nav-item>
       </div>
-      <div v-bind:class="{taskToggle, 'taskToggleOff':this.$store.state.hidden, 'taskToggleOn':!this.$store.state.hidden}" @click="toggle">
-        <b-nav-item>{{ this.$store.state.hidden ? 'Open Tasks &#128457;' : 'Close Tasks &#128456;' }}</b-nav-item>
+      <div
+        v-bind:class="{taskToggle, 'taskToggleOff':this.$store.state.hidden, 'taskToggleOn':!this.$store.state.hidden}"
+        @click="toggle"
+      >
+        <b-nav-item>{{ this.$store.state.hidden ? 'Open Tasks' : 'Close Tasks'}} &#128466;</b-nav-item>
       </div>
     </b-nav>
   </div>
@@ -65,19 +68,43 @@ export default Vue.extend({
 </script>
 
 <style scoped>
+@keyframes fadeInRight {
+  0% {
+    transform: translateX(35px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes fadeInLeft {
+  0% {
+    transform: translateX(-35px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 .nav {
   padding-top: 20px;
 }
+
 .taskToggle:active {
-    outline: none;
+  outline: none;
 }
+
 .taskToggleOff {
   position: fixed;
   right: 0px;
+  animation-name: fadeInLeft;
+  animation-duration: 1s;
 }
+
 .taskToggleOn {
   position: fixed;
-  right: 25%;
+  right: 350px;
+  animation-name: fadeInRight;
+  animation-duration: 1s;
 }
 </style>
 
