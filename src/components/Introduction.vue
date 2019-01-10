@@ -7,14 +7,16 @@
     <b-row align-v="center" align-h="center" class="introduction-buttons">
       <b-col></b-col>
       <b-col cols="2">
-        <b-button :variant="'primary'" @click="$emit('startLayer', GameLayers.PhysicalLayer)">
-          Start Physical Layer Game
-        </b-button>
+        <b-button
+          :variant="'primary'"
+          @click="$emit('startLayer', GameLayers.PhysicalLayer)"
+        >Start Physical Layer Game</b-button>
       </b-col>
       <b-col cols="2">
-        <b-button :variant="'primary'" @click="$emit('startLayer', GameLayers.ApplicationLayer)">
-          Start Application Layer Game
-        </b-button>
+        <b-button
+          :variant="'primary'"
+          @click="$emit('startLayer', GameLayers.ApplicationLayer)"
+        >Start Application Layer Game</b-button>
       </b-col>
       <b-col></b-col>
     </b-row>
@@ -22,14 +24,14 @@
 </template>
 
 <script>
-import { GameLayers } from '../Game.vue'
+import { GameLayers } from "../Game.vue";
 
 export default {
-  name: 'Introduction',
+  name: "Introduction",
   data() {
-    return { GameLayers }
+    return { GameLayers };
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
