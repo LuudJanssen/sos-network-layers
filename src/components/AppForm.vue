@@ -10,7 +10,7 @@
         ></b-form-input>
       </b-form-group>
 
-      <b-form-group id="address" label="Address" label-for="addressInput">
+      <b-form-group v-if="true" id="address" label="Address" label-for="addressInput">
         <b-form-input
           id="addressInput"
           type="address"
@@ -65,6 +65,13 @@
 </template>
 
 <script>
+/*
+showAd = true,
+showName = true,
+showLong = true,
+showLat = true,
+showPrio = true
+*/
 export default {
   data() {
     return {

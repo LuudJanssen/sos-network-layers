@@ -30,7 +30,7 @@
     </b-button>
 
     <b-button v-for="tab in tabs" @click="tab.toggleColor()" :key="tab.text">
-      {{ tab.textOptions[0] }}
+            {{ tab.textOptions[0] }} 
     </b-button>
   </div>
 </template>
@@ -80,15 +80,18 @@ class Tab {
 const colorOptions = [Color.Transparent, Color.Orange]
 
 const tabs = [
-  new Tab(['Home', 'Home3', 'Home8'], colorOptions),
-  new Tab(['About', 'About2'], colorOptions)
+  new Tab(['Island', 'Home', 'Welcome'], colorOptions),
+  new Tab(['Reporting', 'Ahhhh','Report SOS'], colorOptions),
+  new Tab(['History', 'About us'], colorOptions),
+  new Tab(['Core values', 'delete'], colorOptions)
 ]
 
 export default Vue.extend({
   name: "NavBar",
   data: () => {
     return {
-      tabs
+      tabs,
+      showElement: true
     };
   },
   methods: {

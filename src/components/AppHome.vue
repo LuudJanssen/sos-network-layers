@@ -1,8 +1,8 @@
 <template>
   <div class="app-home">
     <div class="box">
-      <div v-bind:class="{'red':isActive, 'blue':!isActive}">
-        <button @click="changeColor()">toggle</button>
+      <div v-bind:class="{'yellow':!isActive, 'black':isActive}">
+        <b-button @click="changeColor()">Text color</b-button>
         <h1>HTML Ipsum Presents</h1>
 
         <p>
@@ -65,11 +65,11 @@ export default {
   padding-left: 100px;
 }
 
-.red {
-  color: red;
+.yellow {
+  color: yellow;
 }
 
-.blue {
-  color: blue;
+.black {
+  color: black;
 }
 </style>
