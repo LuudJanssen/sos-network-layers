@@ -45,8 +45,8 @@
             <b-col></b-col>
             <div v-for="button in buttons" :key="button.id">
               <b-col cols="1">
-                <b-button v-on:click="update(button.id)" :variant="'primary'" >
-                  {{ button.id }}
+                <b-button v-on:click="update(button.button)" :variant="'primary'" >
+                  {{ button.button }}
                 </b-button>
               </b-col>
             </div>
@@ -78,10 +78,10 @@ export default {
       ],
 
       buttons: [
+        {button: 0},
         {button: 1},
         {button: 2},
-        {button: 3},
-        {button: 4},        
+        {button: 3},        
       ],
 
       lights: [
@@ -95,12 +95,16 @@ export default {
       light_off: require('../res/img/light_off.jpg'),
 
       outmem: 0,
+      test: "nog geen knop ingedrukt"
     }
   },
   methods: {
     update: function(nrButton){
+      this.test = "een knop ingedrukt"
+      
       switch(nrButton){
         case 0:
+          this.test = "een knop 0 ingedrukt"
           this.outmem = this.outputs[0].connection
           this.outputs[0].connection = this.outputs[1].connection
           this.outputs[1].connection = this.outmem
@@ -108,6 +112,7 @@ export default {
           this.lights[0].value = !this.lights[0].value
           break
         case 1:
+          this.test = "een knop 1 ingedrukt"
           this.outmem = this.outputs[1].connection
           this.outputs[1].connection = this.outputs[2].connection
           this.outputs[2].connection = this.outputs[3].connection
@@ -116,6 +121,7 @@ export default {
           this.lights[1].value = this.lights[0].value
           break
         case 2:
+          this.test = "een knop 2 ingedrukt"
           this.outmem = this.outputs[0].connection
           this.outputs[0].connection = this.outputs[3].connection
           this.outputs[3].connection = this.outmem
@@ -123,6 +129,7 @@ export default {
           this.lights[3].value = !Math.min(this.lights[3].value, this.lights[1].value)
           break
         case 3:
+          this.test = "een knop 3 ingedrukt"
           this.outmem = this.outputs[0].connection
           this.outputs[0].connection = this.outputs[3].connection
           this.outputs[3].connection = this.outmem
