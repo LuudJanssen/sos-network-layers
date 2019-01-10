@@ -6,15 +6,15 @@
     <div>
       <h1>Application Layer</h1>
       <NavBar></NavBar>
-      <router-view :datas="devIsHidden"/>
+      <router-view/>
     </div>
-    <DevMenu :datas="devIsHidden"></DevMenu>
+    <TaskList></TaskList>
   </div>
 </template>
 
 <script>
 import NavBar from "./NavBar";
-import DevMenu from "./DevMenu";
+import TaskList from "./TaskList";
 
 import Vue from "vue";
 import Vuex from "vuex";
@@ -27,7 +27,6 @@ const store = new Vuex.Store({
   mutations: {
     toggle(state) {
       state.hidden = !state.hidden;
-      alert(hidden);
     }
   }
 });
@@ -37,7 +36,7 @@ export default {
   store,
   components: {
     NavBar,
-    DevMenu
+    TaskList
   }
 };
 </script>

@@ -16,8 +16,8 @@
       <div v-bind:class="tab4">
         <b-nav-item>Tab4</b-nav-item>
       </div>
-      <div v-bind:class="tabDevMenu" class="devMenuToggle" @click="toggle">
-        <b-nav-item>Toggle Dev Menu &#9881; &#8942;</b-nav-item>
+      <div v-bind:class="{taskToggle, 'taskToggleOff':this.$store.state.hidden, 'taskToggleOn':!this.$store.state.hidden}" @click="toggle">
+        <b-nav-item>{{ this.$store.state.hidden ? 'Open Tasks &#128457;' : 'Close Tasks &#128456;' }}</b-nav-item>
       </div>
     </b-nav>
   </div>
@@ -68,9 +68,16 @@ export default Vue.extend({
 .nav {
   padding-top: 20px;
 }
-.devMenuToggle {
+.taskToggle:active {
+    outline: none;
+}
+.taskToggleOff {
   position: fixed;
   right: 0px;
+}
+.taskToggleOn {
+  position: fixed;
+  right: 25%;
 }
 </style>
 
