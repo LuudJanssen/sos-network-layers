@@ -17,10 +17,9 @@
         <b-nav-item>Tab4</b-nav-item>
       </div>
       <div v-bind:class="tabDevMenu" class="devMenuToggle" @click="toggle">
-        <b-nav-item>Toggle Dev Menu</b-nav-item>
+        <b-nav-item>Toggle Dev Menu &#9881; &#8942;</b-nav-item>
       </div>
     </b-nav>
-    <router-view/>
   </div>
 </template>
 
