@@ -20,7 +20,6 @@
         <b-nav-item>Toggle Dev Menu</b-nav-item>
       </div>
     </b-nav>
-    <router-view/>
   </div>
 </template>
 
