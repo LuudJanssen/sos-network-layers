@@ -4,10 +4,10 @@
 -->
 <template>
   <b-container fluid class="introduction">
-    <b-row align-v="center" align-h="center" class="introduction-island">
-      <div class="water"></div>
-      <img class="sideburn-left" src="../assets/water-sideburn-left.svg">
-      <img class="sideburn-right" src="../assets/water-sideburn-right.svg">
+    <b-row align-v="center" align-h="center" class="introduction-block">
+      <div class="sky"></div>
+      <img class="sideburn-left" src="../assets/water-sideburn-left.svg" v-parallax="0.2">
+      <img class="sideburn-right" src="../assets/water-sideburn-right.svg" v-parallax="0.2">
       <b-col cols="3"></b-col>
       <b-col>
         <img src="../assets/island-detail.svg">
@@ -23,6 +23,9 @@
         </b-button>
       </b-col> -->
       <b-col cols="3"></b-col>
+    </b-row>
+    <b-row align-v="center" align-h="center" class="introduction-block">
+      <div class="water"></div>
     </b-row>
   </b-container>
 </template>
@@ -41,23 +44,24 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .introduction {
-  background: radial-gradient(ellipse at center, #f0f9ff 0%,#cbebff 47%,#a1dbff 100%);
+  background-color: #4194B5;
   height: 100%;
+  min-height: 100%;
 }
 
-.introduction-island {
+.introduction-block {
   position: relative;
   z-index: 1;
   height: 100%;
 }
 
-.water {
+.sky {
   position: absolute;
-  background-color: #4194B5;
-  width: 100%;
   height: 50%;
-  bottom: 0;
+  top: 0;
   z-index: 0;
+  width: 100%;
+  background: radial-gradient(ellipse at center, #f0f9ff 0%,#cbebff 47%,#a1dbff 100%);
 }
 
 .sideburn-left {
