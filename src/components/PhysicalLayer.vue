@@ -43,10 +43,10 @@
         <b-container fluid class="col">
           <b-row align-v="center" align-h="center" class="wire-buttons">
             <b-col></b-col>
-            <div v-for="input in inputs" :key="input.id">
+            <div v-for="button in buttons" :key="button.id">
               <b-col cols="1">
-                <b-button v-on:click="update(input.input)" :variant="'primary'" >
-                  {{ input.input }}
+                <b-button v-on:click="update(button.id)" :variant="'primary'" >
+                  {{ button.id }}
                 </b-button>
               </b-col>
             </div>
@@ -77,6 +77,13 @@ export default {
         {input: 4},
       ],
 
+      buttons: [
+        {button: 1},
+        {button: 2},
+        {button: 3},
+        {button: 4},        
+      ],
+
       lights: [
         {light: 1, value: true},
         {light: 2, value: false},
@@ -93,14 +100,14 @@ export default {
   methods: {
     update: function(nrButton){
       switch(nrButton){
-        case 1:
+        case 0:
           this.outmem = this.outputs[0].connection
           this.outputs[0].connection = this.outputs[1].connection
           this.outputs[1].connection = this.outmem
 
           this.lights[0].value = !this.lights[0].value
           break
-        case 2:
+        case 1:
           this.outmem = this.outputs[1].connection
           this.outputs[1].connection = this.outputs[2].connection
           this.outputs[2].connection = this.outputs[3].connection
@@ -108,14 +115,14 @@ export default {
 
           this.lights[1].value = this.lights[0].value
           break
-        case 3:
+        case 2:
           this.outmem = this.outputs[0].connection
           this.outputs[0].connection = this.outputs[3].connection
           this.outputs[3].connection = this.outmem
 
           this.lights[3].value = !Math.min(this.lights[3].value, this.lights[1].value)
           break
-        case 4:
+        case 3:
           this.outmem = this.outputs[0].connection
           this.outputs[0].connection = this.outputs[3].connection
           this.outputs[3].connection = this.outmem
@@ -153,6 +160,6 @@ export default {
 }
 
 .img {
-  max-height: 3cm
+  max-height: 3cm;
 }
 </style>
