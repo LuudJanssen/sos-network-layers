@@ -6,13 +6,11 @@
 <!-- This is the HTML part of the Game component -->
 <template>
   <div id="game">
-
     <!-- 
       Here we reference the Introduction component, it's template gets loaded here.The Introduction component emits the
       "startLayer" event with the game layer to be loaded as the argument. We then set the layer to the right layer.
     -->
-    <Introduction v-if="layer === GameLayers.Introduction" 
-                  @startLayer="layer = $event"/>
+    <Introduction v-if="layer === GameLayers.Introduction" @startLayer="layer = $event"/>
 
     <!-- We show the right layer depending on the layer value -->
     <PhysicalLayer v-if="layer === GameLayers.PhysicalLayer"/>
@@ -22,30 +20,30 @@
 
 <!-- This is the TypeScript part of the Game component. -->
 <script>
-import Introduction from './components/Introduction.vue'
-import PhysicalLayer from './components/PhysicalLayer.vue'
-import ApplicationLayer from './components/ApplicationLayer.vue'
+import Introduction from "./components/Introduction.vue";
+import PhysicalLayer from "./components/PhysicalLayer.vue";
+import ApplicationLayer from "./components/ApplicationLayer.vue";
 
 // We create an enum with all the game's layers.
 export const GameLayers = {
   Introduction,
   PhysicalLayer,
-  ApplicationLayer,
-}
+  ApplicationLayer
+};
 
 /**
  * This is the component code itself. It only exposes the current layer and all game layers to the template.
  */
 export default {
-  name: 'Game',
+  name: "Game",
   components: GameLayers,
   data() {
     return {
       layer: GameLayers.Introduction,
-      GameLayers,
-    }
-  },
-}
+      GameLayers
+    };
+  }
+};
 </script>
 
 <!-- 
@@ -59,6 +57,6 @@ export default {
 }
 
 * {
-  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  font-family: "Montserrat", Helvetica, Arial, sans-serif;
 }
 </style>

@@ -37,10 +37,10 @@
 </template>
 
 <script>
-import { GameLayers } from '../Game.vue'
+import { GameLayers } from "../Game.vue";
 
 export default {
-  name: 'Introduction',
+  name: "Introduction",
   data() {
     return { GameLayers }
   },
@@ -53,7 +53,7 @@ export default {
     // This shows the explanation pop-up on start
     this.$refs.modalExplanation.show()
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
