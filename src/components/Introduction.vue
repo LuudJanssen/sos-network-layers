@@ -6,11 +6,9 @@
   <b-container fluid class="introduction">
     <b-row align-v="center" align-h="center" class="introduction-block">
       <div class="sky"></div>
-      <img class="sideburn-left" src="../assets/water-sideburn-left.svg" v-parallax="0.2">
-      <img class="sideburn-right" src="../assets/water-sideburn-right.svg" v-parallax="0.2">
       <b-col cols="3"></b-col>
       <b-col>
-        <img src="../assets/island-detail.svg">
+        <img src="../assets/island-detail.svg" class="introduction-island">
       </b-col>
       <!-- <b-col cols="2">
         <b-button :variant="'primary'" @click="$emit('startLayer', GameLayers.PhysicalLayer)">
@@ -27,6 +25,14 @@
     <b-row align-v="center" align-h="center" class="introduction-block">
       <div class="water"></div>
     </b-row>
+
+    <b-modal ref="modalExplanation" title="Please, help poor Peter" @hidden="explanationClosed()" centered cancel-disabled>
+      <p class="my-4">Hello from modal!</p>
+    </b-modal>
+
+    <div class="status">
+
+    </div>
   </b-container>
 </template>
 
@@ -37,6 +43,15 @@ export default {
   name: 'Introduction',
   data() {
     return { GameLayers }
+  },
+  methods:{
+    explanationClosed() {
+      console.log('Explanation closed');
+    }
+  },
+  mounted() {
+    // This shows the explanation pop-up on start
+    this.$refs.modalExplanation.show()
   }
 }
 </script>
@@ -46,7 +61,7 @@ export default {
 .introduction {
   background-color: #4194B5;
   height: 100%;
-  min-height: 100%;
+  overflow: auto;
 }
 
 .introduction-block {
@@ -62,19 +77,5 @@ export default {
   z-index: 0;
   width: 100%;
   background: radial-gradient(ellipse at center, #f0f9ff 0%,#cbebff 47%,#a1dbff 100%);
-}
-
-.sideburn-left {
-  position: absolute;
-  width: 25%;
-  left: 0;
-  bottom: 0;
-}
-
-.sideburn-right {
-  position: absolute;
-  width: 20%;
-  right: 0;
-  bottom: 0;
 }
 </style>
