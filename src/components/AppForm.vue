@@ -1,7 +1,7 @@
 <template>
   <div class="box">
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-      <b-form-group v-if="showName" id="fullName" label="Full Name" label-for="fullNameInput">
+      <b-form-group v-if="this.$store.state.form.showName" id="fullName" label="Full Name" label-for="fullNameInput">
         <b-form-input
           id="fullNameInput"
           type="name"
@@ -9,9 +9,9 @@
           placeholder="Enter Full Name"
         ></b-form-input>
       </b-form-group>
-      <b-button v-on:click="showName = !showName">Show name?</b-button>
+      <b-button v-on:click="toggle('showName')">Show name?</b-button>
 
-      <b-form-group v-if="showAd" id="address" label="Address" label-for="addressInput">
+      <b-form-group v-if="this.$store.state.form.showAd" id="address" label="Address" label-for="addressInput">
         <b-form-input
           id="addressInput"
           type="address"
@@ -19,10 +19,10 @@
           placeholder="Enter Address"
         ></b-form-input>
       </b-form-group>
-      <b-button v-on:click="showAd = !showAd">Show address?</b-button>
+      <b-button v-on:click="toggle('showAd')">Show address?</b-button>
 
       <b-form-group
-        v-if="showLong"
+        v-if="this.$store.state.form.showLong"
         id="longitude"
         label="Longitude"
         label-for="longitudeInput"
@@ -36,10 +36,10 @@
           placeholder="Enter Longitude"
         ></b-form-input>
       </b-form-group>
-      <b-button v-on:click="showLong = !showLong">Show long?</b-button>
+      <b-button v-on:click="toggle('showLong')">Show long?</b-button>
 
       <b-form-group
-        v-if="showLat"
+        v-if="this.$store.state.form.showLat"
         id="latitude"
         label="Latitude"
         label-for="latitudeInput"
@@ -53,10 +53,10 @@
           placeholder="Enter Latitude"
         ></b-form-input>
       </b-form-group>
-      <b-button v-on:click="showLat = !showLat">Show lat?</b-button>
+      <b-button v-on:click="toggle('showLat')">Show lat?</b-button>
 
       <b-form-group
-        v-if="showPrio"
+        v-if="this.$store.state.form.showPrio"
         id="emergencyPrio"
         label="Emergency Priority"
         label-for="emergencyPrioInput"
@@ -64,7 +64,7 @@
       >
         <b-form-select id="emergencyPrioInput" :options="prio" required v-model="form.prio"></b-form-select>
       </b-form-group>
-      <b-button v-on:click="showPrio = !showPrio">Show prio?</b-button>
+      <b-button v-on:click="toggle('showPrio')">Show prio?</b-button>
 
       <b-button type="submit" variant="primary">Submit</b-button>
       <b-button type="reset" variant="danger">Reset</b-button>
@@ -73,17 +73,9 @@
 </template>
 
 <script>
-/*
-
-*/
 export default {
   data() {
     return {
-      showAd: true,
-      showName: true,
-      showLong: true,
-      showLat: true,
-      showPrio: true,
       name: "AppForm",
       form: {
         address: "",
@@ -98,6 +90,9 @@ export default {
     };
   },
   methods: {
+    toggle(field) {
+      this.$store.commit('toggle', field);
+    },
     onSubmit(evt) {
       evt.preventDefault();
       alert(JSON.stringify(this.form));

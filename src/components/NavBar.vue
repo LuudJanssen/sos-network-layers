@@ -39,10 +39,10 @@
       :key="tab.text"
     >{{ tab.textOptions[0] }}</b-button>
     <div
-      v-bind:class="{taskToggle, 'taskToggleOff':this.$store.state.hidden, 'taskToggleOn':!this.$store.state.hidden}"
+      v-bind:class="{taskToggle, 'taskToggleOff':this.$store.state.showTaskList, 'taskToggleOn':!this.$store.state.showTaskList}"
       @click="toggle"
     >
-      <b-nav-item>{{ this.$store.state.hidden ? 'Open Tasks' : 'Close Tasks'}} &#128466;</b-nav-item>
+      <b-nav-item>{{ this.$store.state.showTaskList ? 'Open Tasks' : 'Close Tasks'}} &#128466;</b-nav-item>
     </div>
   </div>
 </template>
@@ -59,7 +59,7 @@ export default Vue.extend({
   },
   methods: {
     toggle() {
-      this.$store.commit("toggle");
+      this.$store.commit("toggle", "showTaskList");
     }
   }
 });
