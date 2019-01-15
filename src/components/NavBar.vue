@@ -50,55 +50,6 @@
 <script>
 import Vue from "vue";
 
-// const Color = {
-//   Transparent: {
-//     backgroundColor: "rgba(0,0,0,0)",
-//     color: "black"
-//   },
-//   Orange: {
-//     backgroundColor: "#ffc107",
-//     color: "white"
-//   }
-// }
-
-// class Tab {
-//   constructor(textOptions, colorOptions, route) {
-//     this.textOptions = textOptions
-//     this.colorOptions = colorOptions
-//     this.text = this.textOptions[0]
-//     this.color = this.colorOptions[0]
-//     this.route = route
-//   }
-
-//   toggleText() {
-//     this.text = this.toggleOption(this.textOptions, this.text)
-//   }
-
-//   toggleColor() {
-//     this.color = this.toggleOption(this.colorOptions, this.color)
-//   }
-
-//   toggleOption(options, option) {
-//     const currentIndex = options.indexOf(option)
-//     let newIndex = currentIndex + 1
-
-//     if (options.length === newIndex) {
-//       newIndex = 0
-//     }
-
-//     return options[newIndex]
-//   }
-// }
-
-// const colorOptions = [Color.Transparent, Color.Orange]
-
-// const tabs = [
-//   new Tab(['Island', 'Home', 'Welcome'], colorOptions, 'apphome'),
-//   new Tab(['Reporting', 'Ahhhh','Report SOS'], colorOptions, 'appform'),
-//   new Tab(['History', 'About us'], colorOptions, ''),
-//   new Tab(['Core values', 'delete'], colorOptions, '')
-// ]
-
 export default Vue.extend({
   name: "NavBar",
   data: () => {
