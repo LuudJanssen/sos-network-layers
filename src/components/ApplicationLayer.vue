@@ -24,12 +24,12 @@ const store = new Vuex.Store({
   state: {
     hidden: true,
     color: {
-      text1: "blue",
-      text2: "blue",
-      text3: "blue",
-      header1: "blue",
-      header2: "blue",
-      header3: "blue"
+      text1: "yellow",
+      text2: "yellow",
+      text3: "yellow",
+      header1: "yellow",
+      header2: "yellow",
+      header3: "yellow"
     }
   },
   mutations: {
@@ -39,19 +39,19 @@ const store = new Vuex.Store({
     changeColor(state, field) {
       if (field.charAt(0) === "t") {
         if (field === "text1") {
-          state.color.text1 = state.color.text1 === "blue" ? "red" : "blue";
+          state.color.text1 = state.color.text1 === "yellow" ? "black" : "yellow";
         } else if (field === "text2") {
-          state.color.text2 = state.color.text2 === "blue" ? "red" : "blue";
+          state.color.text2 = state.color.text2 === "yellow" ? "black" : "yellow";
         } else if (field === "text3") {
-          state.color.text3 = state.color.text3 === "blue" ? "red" : "blue";
+          state.color.text3 = state.color.text3 === "yellow" ? "black" : "yellow";
         }
       } else if (field.charAt(0) === "h") {
         if (field === "header1") {
-          state.color.header1 = state.color.header1 === "blue" ? "red" : "blue";
+          state.color.header1 = state.color.header1 === "yellow" ? "black" : "yellow";
         } else if (field === "header2") {
-          state.color.header2 = state.color.header2 === "blue" ? "red" : "blue";
+          state.color.header2 = state.color.header2 === "yellow" ? "black" : "yellow";
         } else if (field === "header3") {
-          state.color.header3 = state.color.header3 === "blue" ? "red" : "blue";
+          state.color.header3 = state.color.header3 === "yellow" ? "black" : "yellow";
         }
       }
     }

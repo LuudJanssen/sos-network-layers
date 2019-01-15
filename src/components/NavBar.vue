@@ -1,42 +1,26 @@
 <template>
   <div>
-    <b-nav justified tabs class="nav">
-      <!--<div v-bind:class="tab1">
-        <b-nav-item to="apphome">Home</b-nav-item>
-      </div>
-      <div v-bind:class="tab2">
-        <b-nav-item to="appform">Form</b-nav-item>
-      </div>
-      <div v-bind:class="tab3">
-        <b-nav-item>
-          <div v-if="tab3.opt1===true">option1</div>
-          <div v-else>no option</div>
-        </b-nav-item>
-      </div>
-      <div v-bind:class="tab4">
-        <b-nav-item>Tab4</b-nav-item>
-      </div>
-      <div v-bind:class="tabDevMenu" class="devMenuToggle" @click="toggle">
-        <b-nav-item>Toggle Dev Menu</b-nav-item>
-      </div>-->
+    <b-nav class="nav">
 
-      <b-nav-item v-bind:to="tab.route" v-for="tab in tabs" v-bind:style="{ backgroundColor: tab.color.backgroundColor, color: tab.color.color }" :key="tab.text">
+      <b-nav-item v-bind:id="tab.id" v-bind:to="tab.route" v-for="tab in tabs" v-bind:style="{ backgroundColor: tab.color.backgroundColor, color: tab.color.color }" :key="tab.text">
         {{ tab.text }}
       </b-nav-item>
     </b-nav>
 
-    <b-button v-for="tab in tabs" @click="tab.toggleText()" :key="tab.text">
-      {{ tab.textOptions[0] }}
-    </b-button>
+    <b-popover v-bind:target="tab.id" v-for="tab in tabs" title="Navigation Bar" :key="tab.text">
+      <b-button @click="tab.toggleText()">
+        Change Text
+      </b-button>
 
-    <b-button v-for="tab in tabs" @click="tab.toggleColor()" :key="tab.text">
-            {{ tab.textOptions[0] }} 
+      <b-button @click="tab.toggleColor()">
+            Change Color 
     </b-button>
+    </b-popover>
+
       <div v-bind:class="{taskToggle, 'taskToggleOff':this.$store.state.hidden, 'taskToggleOn':!this.$store.state.hidden}"
            @click="toggle">
         <b-nav-item>{{ this.$store.state.hidden ? 'Open Tasks' : 'Close Tasks'}} &#128466;</b-nav-item>
       </div>
-    </b-nav>
   </div>
 </template>
 
@@ -55,12 +39,13 @@ const Color = {
 }
 
 class Tab {
-  constructor(textOptions, colorOptions, route) {
+  constructor(id, textOptions, colorOptions, route) {
     this.textOptions = textOptions
     this.colorOptions = colorOptions
     this.text = this.textOptions[0]
     this.color = this.colorOptions[0]
     this.route = route
+    this.id = id
   }
 
   toggleText() {
@@ -86,10 +71,10 @@ class Tab {
 const colorOptions = [Color.Transparent, Color.Orange]
 
 const tabs = [
-  new Tab(['Island', 'Home', 'Welcome'], colorOptions, 'apphome'),
-  new Tab(['Reporting', 'Ahhhh','Report SOS'], colorOptions, 'appform'),
-  new Tab(['History', 'About us'], colorOptions, ''),
-  new Tab(['Core values', 'delete'], colorOptions, '')
+  new Tab('tab1', ['Island', 'Home', 'Welcome'], colorOptions, 'apphome'),
+  new Tab('tab2', ['Reporting', 'Ahhhh','Report SOS'], colorOptions, 'appform'),
+  new Tab('tab3', ['History', 'About us'], colorOptions, ''),
+  new Tab('tab4', ['Core values', 'Tell me more'], colorOptions, '')
 ]
 
 export default Vue.extend({

@@ -2,14 +2,16 @@
   <div class="app-home">
     <div class="box">
       <div>
-        <button @click="changeColor('header1')">toggle header color</button>
-        <h1
-          v-bind:class="{'red':this.$store.state.color.header1 === 'red', 'blue':this.$store.state.color.header1 === 'blue'}"
+        <h1 id="header1"
+          v-bind:class="{'yellow':this.$store.state.color.header1 === 'yellow', 'black':this.$store.state.color.header1 === 'black'}"
         >HTML Ipsum Presents</h1>
+        <b-popover target="header1">
+          <b-button @click="changeColor('header1')">Change Color</b-button>
+        </b-popover>
 
-        <button @click="changeColor('text1')">toggle text color</button>
-        <p
-          v-bind:class="{'red':this.$store.state.color.text1 === 'red', 'blue':this.$store.state.color.text1 === 'blue'}"
+        
+        <p id="text1"
+          v-bind:class="{'yellow':this.$store.state.color.text1 === 'yellow', 'black':this.$store.state.color.text1 === 'black'}"
         >
           <strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.
           <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed,
@@ -18,38 +20,53 @@
             href="#"
           >Donec non enim</a> in turpis pulvinar facilisis. Ut felis.
         </p>
+        <b-popover target="text1">
+          <b-button @click="changeColor('text1')">Change Color</b-button>
+        </b-popover>
 
-        <button @click="changeColor('header2')">toggle header color</button>
-        <h2
-          v-bind:class="{'red':this.$store.state.color.header2 === 'red', 'blue':this.$store.state.color.header2 === 'blue'}"
+        <b-popover target="header2">
+          <b-button @click="changeColor('header2')">Change Color</b-button>
+        </b-popover>
+        <h2 id="header2"
+          v-bind:class="{'black':this.$store.state.color.header2 === 'black', 'yellow':this.$store.state.color.header2 === 'yellow'}"
         >Header Level 2</h2>
 
-        <button @click="changeColor('text2')">toggle text color</button>
-        <ol
-          v-bind:class="{'red':this.$store.state.color.text2 === 'red', 'blue':this.$store.state.color.text2 === 'blue'}"
-        >
-          <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-          <li>Aliquam tincidunt mauris eu risus.</li>
-        </ol>
+        <b-popover target="text2">
+          <b-button @click="changeColor('text2')">Change Color</b-button>
+        </b-popover>
+        <i-p id="text2">
+          <ol
+            v-bind:class="{'black':this.$store.state.color.text2 === 'black', 'yellow':this.$store.state.color.text2 === 'yellow'}"
+          >
+            <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+            <li>Aliquam tincidunt mauris eu risus.</li>
+          </ol>
 
-        <blockquote
-          v-bind:class="{'red':this.$store.state.color.text2 === 'red', 'blue':this.$store.state.color.text2 === 'blue'}"
-        >
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p>
-        </blockquote>
+          <blockquote
+            v-bind:class="{'black':this.$store.state.color.text2 === 'black', 'yellow':this.$store.state.color.text2 === 'yellow'}"
+          >
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p>
+          </blockquote>
+        </i-p>
 
-        <button @click="changeColor('header3')">toggle header color</button>
-        <h3
-          v-bind:class="{'red':this.$store.state.color.header3 === 'red', 'blue':this.$store.state.color.header3 === 'blue'}"
+        <b-popover target="header3">
+          <b-button @click="changeColor('header3')">Change Color</b-button>
+        </b-popover>
+        <h3 id="header3"
+          v-bind:class="{'black':this.$store.state.color.header3 === 'black', 'yellow':this.$store.state.color.header3 === 'yellow'}"
         >Header Level 3</h3>
 
-        <button @click="changeColor('text3')">toggle text color</button>
+        <b-popover target="text3">
+          <b-button @click="changeColor('text3')">Change Color</b-button>
+        </b-popover>
+        <p id="text3">
         <ul
-          v-bind:class="{'red':this.$store.state.color.text3 === 'red', 'blue':this.$store.state.color.text3 === 'blue'}"
+          v-bind:class="{'black':this.$store.state.color.text3 === 'black', 'yellow':this.$store.state.color.text3 === 'yellow'}"
         >
           <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
           <li>Aliquam tincidunt mauris eu risus.</li>
         </ul>
+        </p>
       </div>
     </div>
   </div>
