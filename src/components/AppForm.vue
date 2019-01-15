@@ -9,10 +9,9 @@
           placeholder="Enter Full Name"
         ></b-form-input>
       </b-form-group>
-      <b-button v-on:click="showName = !showName">Show name?
-          </b-button>
-      
-      <b-form-group v-if="showAd" id="address" label="Address" label-for="addressInput" >
+      <b-button v-on:click="showName = !showName">Show name?</b-button>
+
+      <b-form-group v-if="showAd" id="address" label="Address" label-for="addressInput">
         <b-form-input
           id="addressInput"
           type="address"
@@ -20,8 +19,7 @@
           placeholder="Enter Address"
         ></b-form-input>
       </b-form-group>
-      <b-button v-on:click="showAd = !showAd">Show address?
-          </b-button>
+      <b-button v-on:click="showAd = !showAd">Show address?</b-button>
 
       <b-form-group
         v-if="showLong"
@@ -38,8 +36,7 @@
           placeholder="Enter Longitude"
         ></b-form-input>
       </b-form-group>
-      <b-button v-on:click="showLong = !showLong">Show long?
-          </b-button>
+      <b-button v-on:click="showLong = !showLong">Show long?</b-button>
 
       <b-form-group
         v-if="showLat"
@@ -56,8 +53,7 @@
           placeholder="Enter Latitude"
         ></b-form-input>
       </b-form-group>
-      <b-button v-on:click="showLat = !showLat">Show lat?
-          </b-button>
+      <b-button v-on:click="showLat = !showLat">Show lat?</b-button>
 
       <b-form-group
         v-if="showPrio"
@@ -68,8 +64,7 @@
       >
         <b-form-select id="emergencyPrioInput" :options="prio" required v-model="form.prio"></b-form-select>
       </b-form-group>
-      <b-button v-on:click="showPrio = !showPrio">Show prio?
-          </b-button>
+      <b-button v-on:click="showPrio = !showPrio">Show prio?</b-button>
 
       <b-button type="submit" variant="primary">Submit</b-button>
       <b-button type="reset" variant="danger">Reset</b-button>

@@ -74,6 +74,14 @@ export default {
   padding-left: 100px;
 }
 
+.red {
+  color: red;
+}
+
+.blue {
+  color: blue;
+}
+
 .yellow {
   color: yellow;
 }

@@ -15,6 +15,7 @@
 <script>
 import NavBar from "./NavBar";
 import TaskList from "./TaskList";
+import Tabs from "./tabs";
 
 import Vue from "vue";
 import Vuex from "vuex";
@@ -30,7 +31,17 @@ const store = new Vuex.Store({
       header1: "blue",
       header2: "blue",
       header3: "blue"
-    }
+    },
+    tabs: [
+      new Tabs.Tab(["Island", "Home", "Welcome"], Tabs.colorOptions, "apphome"),
+      new Tabs.Tab(
+        ["Reporting", "Ahhhh", "Report SOS"],
+        Tabs.colorOptions,
+        "appform"
+      ),
+      new Tabs.Tab(["History", "About us"], Tabs.colorOptions, ""),
+      new Tabs.Tab(["Core values", "delete"], Tabs.colorOptions, "")
+    ]
   },
   mutations: {
     toggle(state) {
