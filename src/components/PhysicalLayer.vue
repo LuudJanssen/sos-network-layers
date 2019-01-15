@@ -59,9 +59,9 @@
 
 <script>
 export default {
-  data(){
-    return{
-      name: 'PhysicalLayer',
+  data() {
+    return {
+      name: "PhysicalLayer",
 
       outputs: [
         {output: 1, connection: 1},
@@ -146,7 +146,7 @@ export default {
       }
     }
   }
-}
+};
 </script>
 
 <style scoped>
@@ -161,7 +161,7 @@ export default {
   height: 80%;
   text-align: center;
 }
-  
+
 .wire-buttons {
   height: 0%;
 }

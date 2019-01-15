@@ -22,23 +22,44 @@
 
 <!-- This is the TypeScript part of the Game component. -->
 <script>
+import Vue from 'vue'
+import Vuex from 'vuex'
 import Introduction from './components/Introduction.vue'
 import PhysicalLayer from './components/PhysicalLayer.vue'
 import ApplicationLayer from './components/ApplicationLayer.vue'
+import { GameLayers } from './shared/gameLayers'
 
-// We create an enum with all the game's layers.
-export const GameLayers = {
-  Introduction,
-  PhysicalLayer,
-  ApplicationLayer,
+Vue.use(Vuex)
+
+export const ConnectionStatus = {
+  NO_CONNECTION: 'NO_CONNECTION',
+  USABILITY_PROBLEMS: 'USABILITY_PROBLEMS',
+  CONNECTED: 'CONNECTED'
 }
+
+const store = new Vuex.Store({
+  state: {
+    hidden: true,
+    connectionStatus: ConnectionStatus.NO_CONNECTION
+  },
+  mutations: {
+    toggle(state) {
+      state.hidden = !state.hidden;
+      alert(hidden);
+    },
+    changeConnectionStatus(state, status) {
+      state.connectionStatus = status
+    }
+  }
+});
 
 /**
  * This is the component code itself. It only exposes the current layer and all game layers to the template.
  */
 export default {
   name: 'Game',
-  components: GameLayers,
+  components: { Introduction, PhysicalLayer, ApplicationLayer },
+  store,
   data() {
     return {
       layer: GameLayers.Introduction,
@@ -56,7 +77,6 @@ export default {
 #game {
   width: 100%;
   height: 100%;
-  overflow: hidden;
 }
 
 * {
