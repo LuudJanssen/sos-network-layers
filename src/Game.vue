@@ -6,11 +6,13 @@
 <!-- This is the HTML part of the Game component -->
 <template>
   <div id="game">
+
     <!-- 
       Here we reference the Introduction component, it's template gets loaded here.The Introduction component emits the
       "startLayer" event with the game layer to be loaded as the argument. We then set the layer to the right layer.
     -->
-    <Introduction v-if="layer === GameLayers.Introduction" @startLayer="layer = $event"/>
+    <Introduction v-if="layer === GameLayers.Introduction" 
+                  @startLayer="layer = $event"/>
 
     <!-- We show the right layer depending on the layer value -->
     <PhysicalLayer v-if="layer === GameLayers.PhysicalLayer"/>
@@ -20,30 +22,57 @@
 
 <!-- This is the TypeScript part of the Game component. -->
 <script>
-import Introduction from "./components/Introduction.vue";
-import PhysicalLayer from "./components/PhysicalLayer.vue";
-import ApplicationLayer from "./components/ApplicationLayer.vue";
+import Vue from 'vue';
+import Vuex from 'vuex';
+import Introduction from './components/Introduction.vue'
+import PhysicalLayer from './components/PhysicalLayer.vue'
+import ApplicationLayer from './components/ApplicationLayer.vue'
+
+Vue.use(Vuex)
+
+export const ConnectionStatus = {
+  NO_CONNECTION: 'NO_CONNECTION',
+  USABILITY_PROBLEMS: 'USABILITY_PROBLEMS',
+  CONNECTED: 'CONNECTED'
+}
 
 // We create an enum with all the game's layers.
 export const GameLayers = {
   Introduction,
   PhysicalLayer,
-  ApplicationLayer
-};
+  ApplicationLayer,
+}
+
+const store = new Vuex.Store({
+  state: {
+    hidden: true,
+    connectionStatus: ConnectionStatus.NO_CONNECTION
+  },
+  mutations: {
+    toggle(state) {
+      state.hidden = !state.hidden;
+      alert(hidden);
+    },
+    changeConnectionStatus(state, status) {
+      state.connectionStatus = status
+    }
+  }
+});
 
 /**
  * This is the component code itself. It only exposes the current layer and all game layers to the template.
  */
 export default {
-  name: "Game",
+  name: 'Game',
   components: GameLayers,
+  store,
   data() {
     return {
       layer: GameLayers.Introduction,
-      GameLayers
-    };
-  }
-};
+      GameLayers,
+    }
+  },
+}
 </script>
 
 <!-- 
@@ -57,6 +86,6 @@ export default {
 }
 
 * {
-  font-family: "Montserrat", Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
 }
 </style>

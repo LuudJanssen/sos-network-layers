@@ -16,25 +16,8 @@
 import NavBar from "./NavBar";
 import DevMenu from "./DevMenu";
 
-import Vue from "vue";
-import Vuex from "vuex";
-Vue.use(Vuex);
-
-const store = new Vuex.Store({
-  state: {
-    hidden: true
-  },
-  mutations: {
-    toggle(state) {
-      state.hidden = !state.hidden;
-      alert(hidden);
-    }
-  }
-});
-
 export default {
   name: "ApplicationLayer",
-  store,
   components: {
     NavBar,
     DevMenu
