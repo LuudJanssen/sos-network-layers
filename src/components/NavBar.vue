@@ -38,71 +38,12 @@
       @click="tab.toggleColor()"
       :key="tab.text"
     >{{ tab.textOptions[0] }}</b-button>
-    <div
-      v-bind:class="{taskToggle, 'taskToggleOff':this.$store.state.showTaskList, 'taskToggleOn':!this.$store.state.showTaskList}"
-      @click="toggle"
-    >
-      <b-nav-item>{{ this.$store.state.showTaskList ? 'Open Tasks' : 'Close Tasks'}} &#128466;</b-nav-item>
-    </div>
   </div>
 </template>
 
-<script>
-import Vue from "vue";
-
-export default Vue.extend({
-  name: "NavBar",
-  data: () => {
-    return {
-      showElement: true
-    };
-  },
-  methods: {
-    toggle() {
-      this.$store.commit("toggle", "showTaskList");
-    }
-  }
-});
-</script>
-
 <style scoped>
-@keyframes fadeInRight {
-  0% {
-    transform: translateX(35px);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-@keyframes fadeInLeft {
-  0% {
-    transform: translateX(-35px);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
 .nav {
   padding-top: 20px;
-}
-
-.taskToggle:active {
-  outline: none;
-}
-
-.taskToggleOff {
-  position: fixed;
-  right: 0px;
-  animation-name: fadeInLeft;
-  animation-duration: 1s;
-}
-
-.taskToggleOn {
-  position: fixed;
-  right: 350px;
-  animation-name: fadeInRight;
-  animation-duration: 1s;
 }
 </style>
 

@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="TaskList"
-    v-bind:class="{'hidden':this.$store.state.hidden, 'shown':!this.$store.state.hidden}"
-  >
+  <div class="TaskList" v-if="this.$store.state.showTaskList">
     <b-button @click="changeColor('header1')">toggle header1 color</b-button>
     <b-button @click="changeColor('text1')">toggle text1 color</b-button>
     <b-button @click="changeColor('header2')">toggle header2 color</b-button>

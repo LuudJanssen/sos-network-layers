@@ -5,6 +5,12 @@
   <div class="application-layer">
     <div>
       <h1>Application Layer</h1>
+      <div
+        v-bind:class="{taskToggle, 'taskToggleOn':this.$store.state.showTaskList, 'taskToggleOff':!this.$store.state.showTaskList}"
+        @click="toggle('showTaskList')"
+      >
+        <b-button>{{ this.$store.state.showTaskList ? 'Open Tasks' : 'Close Tasks'}} &#128466;</b-button>
+      </div>
       <NavBar></NavBar>
       <router-view/>
     </div>
@@ -52,7 +58,7 @@ const store = new Vuex.Store({
   },
   mutations: {
     toggle(state, field) {
-      if (field.substring(0, 6) === "taskLi") {
+      if (field.substring(0, 6) === "showTa") {
         state.showTaskList = !state.showTaskList;
       } else if (field.substring(0, 6) === "showNa") {
         state.form.showName = !state.form.showName;
@@ -94,15 +100,56 @@ export default {
   components: {
     NavBar,
     TaskList
+  },
+  methods: {
+    toggle(field) {
+      this.$store.commit("toggle", field);
+    }
   }
 };
 </script>
 
 <style scoped>
+@keyframes fadeInRight {
+  0% {
+    transform: translateX(35px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes fadeInLeft {
+  0% {
+    transform: translateX(-35px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 .application-layer {
   width: 100%;
   height: 100%;
   text-align: center;
   padding-top: 20px;
+}
+
+.taskToggle {
+}
+
+.taskToggleOff {
+  position: fixed;
+  top: 10px;
+  right: 0px;
+  animation-name: fadeInLeft;
+  animation-duration: 1s;
+}
+
+.taskToggleOn {
+  position: fixed;
+  top: 10px;
+  right: 350px;
+  animation-name: fadeInRight;
+  animation-duration: 1s;
 }
 </style>
