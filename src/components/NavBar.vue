@@ -70,7 +70,7 @@ class Tab {
 
 const colorOptions = [Color.Transparent, Color.Orange]
 
-const tabs = [
+export const tabs = [
   new Tab('tab1', ['Island', 'Home', 'Welcome'], colorOptions, 'apphome'),
   new Tab('tab2', ['Reporting', 'Ahhhh','Report SOS'], colorOptions, 'appform'),
   new Tab('tab3', ['History', 'About us'], colorOptions, ''),

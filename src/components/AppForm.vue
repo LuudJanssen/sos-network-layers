@@ -20,9 +20,6 @@
         <b-button v-on:click="showName = !showName">Show name?
             </b-button>
       </b-popover>
-      
-      <b-form-group id="address" label="Address" label-for="addressInput" >
-        <b-form-input v-if="showAd"
 
       <b-form-group
         v-if="this.$store.state.form.showAd"
@@ -40,9 +37,6 @@
       <b-popover target="address">
         <b-button v-on:click="showAd = !showAd">Show address?</b-button>
       </b-popover>
-
-      <b-form-group
-        
 
       <b-form-group
         v-if="this.$store.state.form.showLong"
@@ -66,9 +60,6 @@
       </b-popover>
 
       <b-form-group
-        
-
-      <b-form-group
         v-if="this.$store.state.form.showLat"
         id="latitude"
         label="Latitude"
@@ -87,10 +78,7 @@
       <b-button v-on:click="showLat = !showLat">Show lat?
           </b-button>
       </b-popover>
-
-      <b-form-group
-        
-
+      
       <b-form-group
         v-if="this.$store.state.form.showPrio"
         id="emergencyPrio"

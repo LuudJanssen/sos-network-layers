@@ -28,8 +28,8 @@ import Introduction from './components/Introduction.vue'
 import PhysicalLayer from './components/PhysicalLayer.vue'
 import ApplicationLayer from './components/ApplicationLayer.vue'
 import { GameLayers } from './shared/gameLayers'
+import Tabs from './components/tabs'
 
-Vue.use(Vuex)
 
 export const ConnectionStatus = {
   NO_CONNECTION: 'NO_CONNECTION',
@@ -40,6 +40,7 @@ export const ConnectionStatus = {
 const store = new Vuex.Store({
   state: {
     showTaskList: true,
+    connectionStatus: ConnectionStatus.NO_CONNECTION,
     color: {
       text1: "blue",
       text2: "blue",
@@ -65,74 +66,6 @@ const store = new Vuex.Store({
       showLat: true,
       showPrio: true
     }
-  },
-  mutations: {
-    toggle(state, field) {
-      if (field.substring(0, 6) === "showTa") {
-        state.showTaskList = !state.showTaskList;
-      } else if (field.substring(0, 6) === "showNa") {
-        state.form.showName = !state.form.showName;
-      } else if (field.substring(0, 6) === "showAd") {
-        state.form.showAd = !state.form.showAd;
-      } else if (field.substring(0, 6) === "showLo") {
-        state.form.showLong = !state.form.showLong;
-      } else if (field.substring(0, 6) === "showLa") {
-        state.form.showLat = !state.form.showlat;
-      } else if (field.substring(0, 6) === "showPr") {
-        state.form.showPrio = !state.form.showPrio;
-      }
-    },
-    changeColor(state, field) {
-      if (field.charAt(0) === "t") {
-        if (field === "text1") {
-          state.color.text1 = state.color.text1 === "yellow" ? "black" : "yellow";
-        } else if (field === "text2") {
-          state.color.text2 = state.color.text2 === "yellow" ? "black" : "yellow";
-        } else if (field === "text3") {
-          state.color.text3 = state.color.text3 === "yellow" ? "black" : "yellow";
-        }
-      } else if (field.charAt(0) === "h") {
-        if (field === "header1") {
-          state.color.header1 = state.color.header1 === "yellow" ? "black" : "yellow";
-        } else if (field === "header2") {
-          state.color.header2 = state.color.header2 === "yellow" ? "black" : "yellow";
-        } else if (field === "header3") {
-          state.color.header3 = state.color.header3 === "yellow" ? "black" : "yellow";
-        }
-      }
-    }
-  }
-});
-
-const store = new Vuex.Store({
-  state: {
-    showTaskList: true,
-    color: {
-      text1: "blue",
-      text2: "blue",
-      text3: "blue",
-      header1: "blue",
-      header2: "blue",
-      header3: "blue"
-    },
-    tabs: [
-      new Tabs.Tab(["Island", "Home", "Welcome"], Tabs.colorOptions, "apphome"),
-      new Tabs.Tab(
-        ["Reporting", "Ahhhh", "Report SOS"],
-        Tabs.colorOptions,
-        "appform"
-      ),
-      new Tabs.Tab(["History", "About us"], Tabs.colorOptions, ""),
-      new Tabs.Tab(["Core values", "delete"], Tabs.colorOptions, "")
-    ],
-    form: {
-      showName: true,
-      showAd: true,
-      showLong: true,
-      showLat: true,
-      showPrio: true
-    },
-    connectionStatus: ConnectionStatus.NO_CONNECTION
   },
   mutations: {
     toggle(state, field) {
