@@ -22,11 +22,38 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    hidden: true
+    hidden: true,
+    color: {
+      text1: "blue",
+      text2: "blue",
+      text3: "blue",
+      header1: "blue",
+      header2: "blue",
+      header3: "blue",
+    }
   },
   mutations: {
     toggle(state) {
       state.hidden = !state.hidden;
+    },
+    changeColor(state, field) {
+      if (field.charAt(0)==='t') {
+        if (field === 'text1') {
+          state.color.text1 = state.color.text1 === "blue" ? "red" : "blue";
+        } else if (field === 'text2') {
+          state.color.text2 = state.color.text2 === "blue" ? "red" : "blue";
+        } else if (field === 'text3') {
+          state.color.text3 = state.color.text3 === "blue" ? "red" : "blue";
+        }
+      } else if (field.charAt(0)==='h') {
+        if (field === 'header1') {
+          state.color.header1 = state.color.header1 === "blue" ? "red" : "blue";
+        } else if (field === 'header2') {
+          state.color.header2 = state.color.header2 === "blue" ? "red" : "blue";
+        } else if (field === 'header3') {
+          state.color.header3 = state.color.header3 === "blue" ? "red" : "blue";
+        }
+      }
     }
   }
 });

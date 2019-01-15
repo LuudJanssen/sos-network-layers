@@ -3,23 +3,6 @@
     class="TaskList"
     v-bind:class="{'hidden':this.$store.state.hidden, 'shown':!this.$store.state.hidden}"
   >
-    <!--
-    Change menu items
-      tab1
-      tab2
-      tab3
-      tab4
-    Change menu colors
-      tab1
-      tab2
-      tab3
-      tab4
-    Change pages
-      tab1
-      tab2
-      tab3
-      tab4
-    -->
   </div>
 </template>
 
