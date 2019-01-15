@@ -20,7 +20,7 @@
         <b-nav-item>Toggle Dev Menu</b-nav-item>
       </div>-->
 
-      <b-nav-item v-for="tab in tabs" v-bind:style="{ backgroundColor: tab.color.backgroundColor, color: tab.color.color }" :key="tab.text">
+      <b-nav-item v-bind:to="tab.route" v-for="tab in tabs" v-bind:style="{ backgroundColor: tab.color.backgroundColor, color: tab.color.color }" :key="tab.text">
         {{ tab.text }}
       </b-nav-item>
     </b-nav>
@@ -50,11 +50,12 @@ const Color = {
 }
 
 class Tab {
-  constructor(textOptions, colorOptions) {
+  constructor(textOptions, colorOptions, route) {
     this.textOptions = textOptions
     this.colorOptions = colorOptions
     this.text = this.textOptions[0]
     this.color = this.colorOptions[0]
+    this.route = route
   }
 
   toggleText() {
@@ -80,10 +81,10 @@ class Tab {
 const colorOptions = [Color.Transparent, Color.Orange]
 
 const tabs = [
-  new Tab(['Island', 'Home', 'Welcome'], colorOptions),
-  new Tab(['Reporting', 'Ahhhh','Report SOS'], colorOptions),
-  new Tab(['History', 'About us'], colorOptions),
-  new Tab(['Core values', 'delete'], colorOptions)
+  new Tab(['Island', 'Home', 'Welcome'], colorOptions, 'apphome'),
+  new Tab(['Reporting', 'Ahhhh','Report SOS'], colorOptions, 'appform'),
+  new Tab(['History', 'About us'], colorOptions, ''),
+  new Tab(['Core values', 'delete'], colorOptions, '')
 ]
 
 export default Vue.extend({
