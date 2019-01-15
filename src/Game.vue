@@ -83,21 +83,21 @@ const store = new Vuex.Store({
       }
     },
     changeColor(state, field) {
-      if (field.substring(0, 4) === "text") {
+      if (field.charAt(0) === "t") {
         if (field === "text1") {
-          state.color.text1 = state.color.text1 === "blue" ? "red" : "blue";
+          state.color.text1 = state.color.text1 === "yellow" ? "black" : "yellow";
         } else if (field === "text2") {
-          state.color.text2 = state.color.text2 === "blue" ? "red" : "blue";
+          state.color.text2 = state.color.text2 === "yellow" ? "black" : "yellow";
         } else if (field === "text3") {
-          state.color.text3 = state.color.text3 === "blue" ? "red" : "blue";
+          state.color.text3 = state.color.text3 === "yellow" ? "black" : "yellow";
         }
-      } else if (field.substring(0, 4) === "head") {
+      } else if (field.charAt(0) === "h") {
         if (field === "header1") {
-          state.color.header1 = state.color.header1 === "blue" ? "red" : "blue";
+          state.color.header1 = state.color.header1 === "yellow" ? "black" : "yellow";
         } else if (field === "header2") {
-          state.color.header2 = state.color.header2 === "blue" ? "red" : "blue";
+          state.color.header2 = state.color.header2 === "yellow" ? "black" : "yellow";
         } else if (field === "header3") {
-          state.color.header3 = state.color.header3 === "blue" ? "red" : "blue";
+          state.color.header3 = state.color.header3 === "yellow" ? "black" : "yellow";
         }
       }
     }
