@@ -74,11 +74,11 @@ export default {
   padding-left: 100px;
 }
 
-.red {
-  color: red;
+.yellow {
+  color: yellow;
 }
 
-.blue {
-  color: blue;
+.black {
+  color: black;
 }
 </style>
