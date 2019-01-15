@@ -94,43 +94,8 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-@keyframes fadeInRight {
-  0% {
-    transform: translateX(35px);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-@keyframes fadeInLeft {
-  0% {
-    transform: translateX(-35px);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
 .nav {
   padding-top: 20px;
-}
-
-.taskToggle:active {
-  outline: none;
-}
-
-.taskToggleOff {
-  position: fixed;
-  right: 0px;
-  animation-name: fadeInLeft;
-  animation-duration: 1s;
-}
-
-.taskToggleOn {
-  position: fixed;
-  right: 350px;
-  animation-name: fadeInRight;
-  animation-duration: 1s;
 }
 </style>
 

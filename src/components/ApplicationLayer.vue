@@ -5,6 +5,12 @@
   <div class="application-layer">
     <div>
       <h1>Application Layer</h1>
+      <div
+        v-bind:class="{taskToggle, 'taskToggleOn':this.$store.state.showTaskList, 'taskToggleOff':!this.$store.state.showTaskList}"
+        @click="toggle('showTaskList')"
+      >
+        <b-button>{{ this.$store.state.showTaskList ? 'Open Tasks' : 'Close Tasks'}} &#128466;</b-button>
+      </div>
       <NavBar></NavBar>
       <router-view/>
     </div>
@@ -15,64 +21,63 @@
 <script>
 import NavBar from "./NavBar";
 import TaskList from "./TaskList";
-
-import Vue from "vue";
-import Vuex from "vuex";
-Vue.use(Vuex);
-
-const store = new Vuex.Store({
-  state: {
-    hidden: true,
-    color: {
-      text1: "yellow",
-      text2: "yellow",
-      text3: "yellow",
-      header1: "yellow",
-      header2: "yellow",
-      header3: "yellow"
-    }
-  },
-  mutations: {
-    toggle(state) {
-      state.hidden = !state.hidden;
-    },
-    changeColor(state, field) {
-      if (field.charAt(0) === "t") {
-        if (field === "text1") {
-          state.color.text1 = state.color.text1 === "yellow" ? "black" : "yellow";
-        } else if (field === "text2") {
-          state.color.text2 = state.color.text2 === "yellow" ? "black" : "yellow";
-        } else if (field === "text3") {
-          state.color.text3 = state.color.text3 === "yellow" ? "black" : "yellow";
-        }
-      } else if (field.charAt(0) === "h") {
-        if (field === "header1") {
-          state.color.header1 = state.color.header1 === "yellow" ? "black" : "yellow";
-        } else if (field === "header2") {
-          state.color.header2 = state.color.header2 === "yellow" ? "black" : "yellow";
-        } else if (field === "header3") {
-          state.color.header3 = state.color.header3 === "yellow" ? "black" : "yellow";
-        }
-      }
-    }
-  }
-});
+import Tabs from "./tabs";
 
 export default {
   name: "ApplicationLayer",
-  store,
   components: {
     NavBar,
     TaskList
+  },
+  methods: {
+    toggle(field) {
+      this.$store.commit("toggle", field);
+    }
   }
 };
 </script>
 
 <style scoped>
+@keyframes fadeInRight {
+  0% {
+    transform: translateX(35px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes fadeInLeft {
+  0% {
+    transform: translateX(-35px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 .application-layer {
   width: 100%;
   height: 100%;
   text-align: center;
   padding-top: 20px;
+}
+
+.taskToggle {
+}
+
+.taskToggleOff {
+  position: fixed;
+  top: 10px;
+  right: 0px;
+  animation-name: fadeInLeft;
+  animation-duration: 1s;
+}
+
+.taskToggleOn {
+  position: fixed;
+  top: 10px;
+  right: 350px;
+  animation-name: fadeInRight;
+  animation-duration: 1s;
 }
 </style>

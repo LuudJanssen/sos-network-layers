@@ -5,10 +5,11 @@ import router from './components/router.js'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-import Vuex from 'vuex'
+
+import VueParallaxJs from 'vue-parallax-js'
 
 Vue.use(BootstrapVue)
-Vue.use(Vuex)
+Vue.use(VueParallaxJs)
 
 Vue.config.productionTip = false
 

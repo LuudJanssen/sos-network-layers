@@ -1,9 +1,35 @@
 <template>
-  <div
-    class="TaskList"
-    v-bind:class="{'hidden':this.$store.state.hidden, 'shown':!this.$store.state.hidden}"
-  ></div>
+  <div class="TaskList" v-if="this.$store.state.showTaskList">
+    <b-button @click="changeColor('header1')">toggle header1 color</b-button>
+    <b-button @click="changeColor('text1')">toggle text1 color</b-button>
+    <b-button @click="changeColor('header2')">toggle header2 color</b-button>
+    <b-button @click="changeColor('text2')">toggle text2 color</b-button>
+    <b-button @click="changeColor('header3')">toggle header3 color</b-button>
+    <b-button @click="changeColor('text3')">toggle text3 color</b-button>
+
+    <b-button @click="toggle('showName')">Show name?</b-button>
+    <b-button @click="toggle('showAd')">Show address?</b-button>
+    <b-button @click="toggle('showLong')">Show long?</b-button>
+    <b-button @click="toggle('showLat')">Show lat?</b-button>
+    <b-button @click="toggle('showPrio')">Show prio?</b-button>
+  </div>
 </template>
+
+<script>
+import Vue from "vue";
+
+export default Vue.extend({
+  name: "TaskList",
+  methods: {
+    changeColor(field) {
+      this.$store.commit("changeColor", field);
+    },
+    toggle(field) {
+      this.$store.commit("toggle", field);
+    }
+  }
+});
+</script>
 
 <style scoped>
 @keyframes fadeInRight {

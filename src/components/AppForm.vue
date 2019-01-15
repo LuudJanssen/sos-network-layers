@@ -1,12 +1,18 @@
 <template>
   <div class="box">
-    <b-form @submit="onSubmit" @reset="onReset" v-if="show"> 
-      <b-form-group  id="fullName" label="Full Name" label-for="fullNameInput">
-        <b-form-input v-if="showName"
+    <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+      <b-form-group
+        v-if="this.$store.state.form.showName"
+        id="fullName"
+        label="Full Name"
+        label-for="fullNameInput"
+      >
+        <b-form-input
           id="fullNameInput"
           type="name"
           v-model="form.name"
           placeholder="Enter Full Name"
+          v-if="showName"
         ></b-form-input>
       </b-form-group>
       
@@ -17,6 +23,14 @@
       
       <b-form-group id="address" label="Address" label-for="addressInput" >
         <b-form-input v-if="showAd"
+
+      <b-form-group
+        v-if="this.$store.state.form.showAd"
+        id="address"
+        label="Address"
+        label-for="addressInput"
+      >
+        <b-form-input
           id="addressInput"
           type="address"
           v-model="form.address"
@@ -24,12 +38,14 @@
         ></b-form-input>
       </b-form-group>
       <b-popover target="address">
-      <b-button v-on:click="showAd = !showAd">Show address?
-          </b-button>
+        <b-button v-on:click="showAd = !showAd">Show address?</b-button>
       </b-popover>
 
       <b-form-group
         
+
+      <b-form-group
+        v-if="this.$store.state.form.showLong"
         id="longitude"
         label="Longitude"
         label-for="longitudeInput"
@@ -51,6 +67,9 @@
 
       <b-form-group
         
+
+      <b-form-group
+        v-if="this.$store.state.form.showLat"
         id="latitude"
         label="Latitude"
         label-for="latitudeInput"
@@ -71,6 +90,9 @@
 
       <b-form-group
         
+
+      <b-form-group
+        v-if="this.$store.state.form.showPrio"
         id="emergencyPrio"
         label="Emergency Priority"
         label-for="emergencyPrioInput"
@@ -90,17 +112,9 @@
 </template>
 
 <script>
-/*
-
-*/
 export default {
   data() {
     return {
-      showAd: true,
-      showName: true,
-      showLong: true,
-      showLat: true,
-      showPrio: true,
       name: "AppForm",
       form: {
         address: "",
