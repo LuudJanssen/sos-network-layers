@@ -47,27 +47,27 @@ const store = new Vuex.Store({
       showAd: true,
       showLong: true,
       showLat: true,
-      showPrio: true,
+      showPrio: true
     }
   },
   mutations: {
     toggle(state, field) {
-      if (field.substring(0,6) === "taskLi") {
-        state.showTaskList = !state.showTaskList
-      } else if (field.substring(0,6) === "showNa") {
-        state.form.showName = !state.form.showName
-      } else if (field.substring(0,6) === "showAd") {
-        state.form.showAd = !state.form.showAd
-      } else if (field.substring(0,6) === "showLo") {
-        state.form.showLong = !state.form.showLong
-      } else if (field.substring(0,6) === "showLa") {
-        state.form.showLat = !state.form.showlat
-      } else if (field.substring(0,6) === "showPr") {
-        state.form.showPrio = !state.form.showPrio
+      if (field.substring(0, 6) === "taskLi") {
+        state.showTaskList = !state.showTaskList;
+      } else if (field.substring(0, 6) === "showNa") {
+        state.form.showName = !state.form.showName;
+      } else if (field.substring(0, 6) === "showAd") {
+        state.form.showAd = !state.form.showAd;
+      } else if (field.substring(0, 6) === "showLo") {
+        state.form.showLong = !state.form.showLong;
+      } else if (field.substring(0, 6) === "showLa") {
+        state.form.showLat = !state.form.showlat;
+      } else if (field.substring(0, 6) === "showPr") {
+        state.form.showPrio = !state.form.showPrio;
       }
     },
     changeColor(state, field) {
-      if (field.substring(0,4) === "text") {
+      if (field.substring(0, 4) === "text") {
         if (field === "text1") {
           state.color.text1 = state.color.text1 === "blue" ? "red" : "blue";
         } else if (field === "text2") {
@@ -75,7 +75,7 @@ const store = new Vuex.Store({
         } else if (field === "text3") {
           state.color.text3 = state.color.text3 === "blue" ? "red" : "blue";
         }
-      } else if (field.substring(0,4) === "head") {
+      } else if (field.substring(0, 4) === "head") {
         if (field === "header1") {
           state.color.header1 = state.color.header1 === "blue" ? "red" : "blue";
         } else if (field === "header2") {
