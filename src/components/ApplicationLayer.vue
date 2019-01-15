@@ -29,7 +29,7 @@ const store = new Vuex.Store({
       text3: "blue",
       header1: "blue",
       header2: "blue",
-      header3: "blue",
+      header3: "blue"
     }
   },
   mutations: {
@@ -37,20 +37,20 @@ const store = new Vuex.Store({
       state.hidden = !state.hidden;
     },
     changeColor(state, field) {
-      if (field.charAt(0)==='t') {
-        if (field === 'text1') {
+      if (field.charAt(0) === "t") {
+        if (field === "text1") {
           state.color.text1 = state.color.text1 === "blue" ? "red" : "blue";
-        } else if (field === 'text2') {
+        } else if (field === "text2") {
           state.color.text2 = state.color.text2 === "blue" ? "red" : "blue";
-        } else if (field === 'text3') {
+        } else if (field === "text3") {
           state.color.text3 = state.color.text3 === "blue" ? "red" : "blue";
         }
-      } else if (field.charAt(0)==='h') {
-        if (field === 'header1') {
+      } else if (field.charAt(0) === "h") {
+        if (field === "header1") {
           state.color.header1 = state.color.header1 === "blue" ? "red" : "blue";
-        } else if (field === 'header2') {
+        } else if (field === "header2") {
           state.color.header2 = state.color.header2 === "blue" ? "red" : "blue";
-        } else if (field === 'header3') {
+        } else if (field === "header3") {
           state.color.header3 = state.color.header3 === "blue" ? "red" : "blue";
         }
       }

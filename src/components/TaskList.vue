@@ -2,8 +2,7 @@
   <div
     class="TaskList"
     v-bind:class="{'hidden':this.$store.state.hidden, 'shown':!this.$store.state.hidden}"
-  >
-  </div>
+  ></div>
 </template>
 
 <style scoped>

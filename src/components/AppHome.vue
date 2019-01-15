@@ -20,23 +20,33 @@
         </p>
 
         <button @click="changeColor('header2')">toggle header color</button>
-        <h2 v-bind:class="{'red':this.$store.state.color.header2 === 'red', 'blue':this.$store.state.color.header2 === 'blue'}">Header Level 2</h2>
-        
+        <h2
+          v-bind:class="{'red':this.$store.state.color.header2 === 'red', 'blue':this.$store.state.color.header2 === 'blue'}"
+        >Header Level 2</h2>
+
         <button @click="changeColor('text2')">toggle text color</button>
-        <ol v-bind:class="{'red':this.$store.state.color.text2 === 'red', 'blue':this.$store.state.color.text2 === 'blue'}">
+        <ol
+          v-bind:class="{'red':this.$store.state.color.text2 === 'red', 'blue':this.$store.state.color.text2 === 'blue'}"
+        >
           <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
           <li>Aliquam tincidunt mauris eu risus.</li>
         </ol>
 
-        <blockquote v-bind:class="{'red':this.$store.state.color.text2 === 'red', 'blue':this.$store.state.color.text2 === 'blue'}">
+        <blockquote
+          v-bind:class="{'red':this.$store.state.color.text2 === 'red', 'blue':this.$store.state.color.text2 === 'blue'}"
+        >
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p>
         </blockquote>
 
         <button @click="changeColor('header3')">toggle header color</button>
-        <h3 v-bind:class="{'red':this.$store.state.color.header3 === 'red', 'blue':this.$store.state.color.header3 === 'blue'}">Header Level 3</h3>
+        <h3
+          v-bind:class="{'red':this.$store.state.color.header3 === 'red', 'blue':this.$store.state.color.header3 === 'blue'}"
+        >Header Level 3</h3>
 
         <button @click="changeColor('text3')">toggle text color</button>
-        <ul v-bind:class="{'red':this.$store.state.color.text3 === 'red', 'blue':this.$store.state.color.text3 === 'blue'}">
+        <ul
+          v-bind:class="{'red':this.$store.state.color.text3 === 'red', 'blue':this.$store.state.color.text3 === 'blue'}"
+        >
           <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
           <li>Aliquam tincidunt mauris eu risus.</li>
         </ul>
