@@ -26,7 +26,10 @@
       <div class="water"></div>
       <div class="cable"></div>
       <div class="games">
-        <div class="game" v-bind:class="{ 'disabled': game.disabled, 'left': index % 2 === 0, 'right': index % 2 === 1 }" v-for="(game, index) in games" :key="game.text">  
+        <div class="game" 
+             v-bind:class="{ 'disabled': game.disabled, 'left': index % 2 === 0, 'right': index % 2 === 1 }" 
+             v-for="(game, index) in games" 
+             :key="game.text" @click="$emit('startLayer', game.gameLayer)">  
           {{ game.text }}
         </div>
       </div>
@@ -51,7 +54,7 @@
 </template>
 
 <script>
-import { GameLayers } from '../Game.vue';
+import { GameLayers } from '../shared/gameLayers';
 
 console.log(GameLayers);
 

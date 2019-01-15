@@ -22,11 +22,12 @@
 
 <!-- This is the TypeScript part of the Game component. -->
 <script>
-import Vue from 'vue';
-import Vuex from 'vuex';
+import Vue from 'vue'
+import Vuex from 'vuex'
 import Introduction from './components/Introduction.vue'
 import PhysicalLayer from './components/PhysicalLayer.vue'
 import ApplicationLayer from './components/ApplicationLayer.vue'
+import { GameLayers } from './shared/gameLayers'
 
 Vue.use(Vuex)
 
@@ -34,13 +35,6 @@ export const ConnectionStatus = {
   NO_CONNECTION: 'NO_CONNECTION',
   USABILITY_PROBLEMS: 'USABILITY_PROBLEMS',
   CONNECTED: 'CONNECTED'
-}
-
-// We create an enum with all the game's layers.
-export const GameLayers = {
-  Introduction,
-  PhysicalLayer,
-  ApplicationLayer,
 }
 
 const store = new Vuex.Store({
@@ -64,7 +58,7 @@ const store = new Vuex.Store({
  */
 export default {
   name: 'Game',
-  components: GameLayers,
+  components: { Introduction, PhysicalLayer, ApplicationLayer },
   store,
   data() {
     return {
