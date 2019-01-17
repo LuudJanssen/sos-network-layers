@@ -16,11 +16,6 @@
             Change Color 
     </b-button>
     </b-popover>
-
-      <div v-bind:class="{taskToggle, 'taskToggleOff':this.$store.state.hidden, 'taskToggleOn':!this.$store.state.hidden}"
-           @click="toggle">
-        <b-nav-item>{{ this.$store.state.hidden ? 'Open Tasks' : 'Close Tasks'}} &#128466;</b-nav-item>
-      </div>
   </div>
 </template>
 

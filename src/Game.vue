@@ -30,6 +30,7 @@ import ApplicationLayer from './components/ApplicationLayer.vue'
 import { GameLayers } from './shared/gameLayers'
 import Tabs from './components/tabs'
 
+Vue.use(Vuex)
 
 export const ConnectionStatus = {
   NO_CONNECTION: 'NO_CONNECTION',
