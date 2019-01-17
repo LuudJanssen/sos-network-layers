@@ -43,12 +43,12 @@ const store = new Vuex.Store({
     showTaskList: true,
     connectionStatus: ConnectionStatus.NO_CONNECTION,
     color: {
-      text1: "blue",
-      text2: "blue",
-      text3: "blue",
-      header1: "blue",
-      header2: "blue",
-      header3: "blue"
+      text1: "black",
+      text2: "black",
+      text3: "black",
+      header1: "black",
+      header2: "black",
+      header3: "black"
     },
     tabs: [
       new Tabs.Tab(["Island", "Home", "Welcome"], Tabs.colorOptions, "apphome"),
@@ -87,19 +87,19 @@ const store = new Vuex.Store({
     changeColor(state, field) {
       if (field.substring(0, 4) === "text") {
         if (field === "text1") {
-          state.color.text1 = state.color.text1 === "blue" ? "red" : "blue";
+          state.color.text1 = state.color.text1 === "black" ? "yellow" : "black";
         } else if (field === "text2") {
-          state.color.text2 = state.color.text2 === "blue" ? "red" : "blue";
+          state.color.text2 = state.color.text2 === "black" ? "yellow" : "black";
         } else if (field === "text3") {
-          state.color.text3 = state.color.text3 === "blue" ? "red" : "blue";
+          state.color.text3 = state.color.text3 === "black" ? "yellow" : "black";
         }
       } else if (field.substring(0, 4) === "head") {
         if (field === "header1") {
-          state.color.header1 = state.color.header1 === "blue" ? "red" : "blue";
+          state.color.header1 = state.color.header1 === "black" ? "yellow" : "black";
         } else if (field === "header2") {
-          state.color.header2 = state.color.header2 === "blue" ? "red" : "blue";
+          state.color.header2 = state.color.header2 === "black" ? "yellow" : "black";
         } else if (field === "header3") {
-          state.color.header3 = state.color.header3 === "blue" ? "red" : "blue";
+          state.color.header3 = state.color.header3 === "black" ? "yellow" : "black";
         }
       }
     },

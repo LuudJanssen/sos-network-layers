@@ -64,12 +64,12 @@
         description="In degrees, with degree symbol"
       >
         <b-form-input
+          v-if="$store.state.form.showLat"
           id="latitudeInput"
           type="latitude"
           v-model="form.latitude"
           required
           placeholder="Enter Latitude"
-          v-if="$store.state.form.showLat"
         ></b-form-input>
       </b-form-group>
       <b-popover target="latitude">

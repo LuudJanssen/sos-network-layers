@@ -1,15 +1,15 @@
 <!--
-  This is the applciation layer component which contains the application layer game
+  is the applciation layer component which contains the application layer game
 -->
 <template>
   <div class="application-layer">
     <div>
       <h1>Application Layer</h1>
       <div
-        v-bind:class="{taskToggle, 'taskToggleOn':this.$store.state.showTaskList, 'taskToggleOff':!this.$store.state.showTaskList}"
+        v-bind:class="{taskToggle, 'taskToggleOn':$store.state.showTaskList, 'taskToggleOff':!$store.state.showTaskList}"
         @click="toggle('showTaskList')"
       >
-        <b-button>{{ this.$store.state.showTaskList ? 'Open Tasks' : 'Close Tasks'}} &#128466;</b-button>
+        <b-button>{{ $store.state.showTaskList ? 'Close Tasks' : 'Open Tasks'}} &#128466;</b-button>
       </div>
       <NavBar></NavBar>
       <router-view/>
@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     toggle(field) {
-      this.$store.commit("toggle", field);
+      $store.commit("toggle", field);
     }
   }
 };
