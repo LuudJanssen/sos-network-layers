@@ -1,32 +1,23 @@
 <template>
   <div class="box">
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-      <b-form-group
-        id="fullName"
-        label="Full Name"
-        label-for="fullNameInput"
-      >
+      <b-form-group id="fullName" label="Full Name" label-for="fullNameInput">
         <b-form-input
-          v-if="$store.state.form.showName"
+          v-if="this.$store.state.form.showName"
           id="fullNameInput"
           type="name"
           v-model="form.name"
           placeholder="Enter Full Name"
         ></b-form-input>
       </b-form-group>
-      
+
       <b-popover target="fullName">
-        <b-button v-on:click="$store.commit('toggle', 'showName')">Toggle name field
-            </b-button>
+        <b-button @click="toggle('showName')">Toggle name field</b-button>
       </b-popover>
 
-      <b-form-group
-        id="address"
-        label="Address"
-        label-for="addressInput"
-      >
+      <b-form-group id="address" label="Address" label-for="addressInput">
         <b-form-input
-          v-if="$store.state.form.showAd"
+          v-if="this.$store.state.form.showAd"
           id="addressInput"
           type="address"
           v-model="form.address"
@@ -34,7 +25,7 @@
         ></b-form-input>
       </b-form-group>
       <b-popover target="address">
-        <b-button v-on:click="$store.commit('toggle', 'showAd')">Toggle Address field</b-button>
+        <b-button @click="toggle('showAd')">Toggle Address field</b-button>
       </b-popover>
 
       <b-form-group
@@ -44,7 +35,7 @@
         description="In degrees, with degree symbol"
       >
         <b-form-input
-          v-if="$store.state.form.showLong" 
+          v-if="this.$store.state.form.showLong"
           id="longitudeInput"
           type="longitude"
           v-model="form.longitude"
@@ -53,8 +44,7 @@
         ></b-form-input>
       </b-form-group>
       <b-popover target="longitude">
-      <b-button v-on:click="$store.commit('toggle', 'showLong')">Toggle longitude field
-          </b-button>
+        <b-button @click="toggle('showLong')">Toggle longitude field</b-button>
       </b-popover>
 
       <b-form-group
@@ -64,7 +54,7 @@
         description="In degrees, with degree symbol"
       >
         <b-form-input
-          v-if="$store.state.form.showLat"
+          v-if="this.$store.state.form.showLat"
           id="latitudeInput"
           type="latitude"
           v-model="form.latitude"
@@ -73,21 +63,25 @@
         ></b-form-input>
       </b-form-group>
       <b-popover target="latitude">
-      <b-button v-on:click="$store.commit('toggle', 'showLat')">Toggle latitude field
-          </b-button>
+        <b-button @click="toggle('showLat')">Toggle latitude field</b-button>
       </b-popover>
-      
+
       <b-form-group
         id="emergencyPrio"
         label="Emergency Priority"
         label-for="emergencyPrioInput"
         description="Choose from: Low, Medium or High"
       >
-        <b-form-select v-if="$store.state.form.showPrio" id="emergencyPrioInput" :options="prio" required v-model="form.prio"></b-form-select>
+        <b-form-select
+          v-if="this.$store.state.form.showPrio"
+          id="emergencyPrioInput"
+          :options="prio"
+          required
+          v-model="form.prio"
+        ></b-form-select>
       </b-form-group>
       <b-popover target="emergencyPrio">
-      <b-button v-on:click="$store.commit('toggle', 'showPrio')">Toggle priority field
-          </b-button>
+        <b-button @click="toggle('showPrio')">Toggle priority field</b-button>
       </b-popover>
 
       <b-button type="submit" variant="primary">Submit</b-button>
@@ -132,6 +126,9 @@ export default {
       this.$nextTick(() => {
         this.show = true;
       });
+    },
+    toggle(field) {
+      this.$store.commit("toggle", field);
     }
   }
 };

@@ -15,10 +15,10 @@ export default Vue.extend({
   name: "TaskList",
   methods: {
     changeColor(field) {
-      $store.commit("changeColor", field);
+      this.$store.commit("changeColor", field);
     },
     toggle(field) {
-      $store.commit("toggle", field);
+      this.$store.commit("toggle", field);
     }
   }
 });

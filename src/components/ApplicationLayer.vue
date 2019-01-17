@@ -62,9 +62,6 @@ export default {
   padding-top: 20px;
 }
 
-.taskToggle {
-}
-
 .taskToggleOff {
   position: fixed;
   top: 10px;
