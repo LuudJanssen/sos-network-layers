@@ -36,7 +36,7 @@
     </b-row>
 
     <b-modal ref="modalExplanation" title="Please, help poor Peter" @hidden="explanationClosed()" centered cancel-disabled>
-      <p>Hey there, future web science student!</p>
+      <p>Hey there, future computer science student!</p>
       <p>The man you saw on the island is Peter. He got stranded and wants to get off the island. He has a computer, as 
         well as an internet cable going into the computer. He wants to access sos.io, a startup that wants to "change 
         the world by making it easier then ever to report an emergency".</p>
