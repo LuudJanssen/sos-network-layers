@@ -45,8 +45,9 @@
           <blockquote
             v-bind:class="{'black':this.$store.state.color.text2 === 'black', 'yellow':this.$store.state.color.text2 === 'yellow'}"
           >
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.
           </blockquote>
+        </p>
 
         <b-popover target="header3">
           <b-button @click="changeColor('header3')">Change Color</b-button>
@@ -72,31 +73,31 @@
 </template>
 
 <script>
-import Vue from "vue";
-
-export default Vue.extend({
-  name: "AppHome",
-  methods: {
-    changeColor(field) {
-      this.$store.commit("changeColor", field);
-    }
-  }
-});
+    import Vue from "vue";
+    
+    export default Vue.extend({
+      name: "AppHome",
+      methods: {
+        changeColor(field) {
+          this.$store.commit("changeColor", field);
+        }
+      }
+    });
 </script>
 
 <style scoped>
-.box {
-  width: 60%;
-  height: 100%;
-  padding: 30px;
-  padding-left: 100px;
-}
-
-.yellow {
-  color: yellow;
-}
-
-.black {
-  color: black;
-}
+    .box {
+      width: 60%;
+      height: 100%;
+      padding: 30px;
+      padding-left: 100px;
+    }
+    
+    .yellow {
+      color: yellow;
+    }
+    
+    .black {
+      color: black;
+    }
 </style>

@@ -7,17 +7,18 @@ const Color = {
     backgroundColor: "#ffc107",
     color: "white"
   }
-};
+}
 
-const colorOptions = [Color.Transparent, Color.Orange];
+export const colorOptions = [Color.Transparent, Color.Orange]
 
-class Tab {
-  constructor(textOptions, colorOptions, route) {
+export class Tab {
+  constructor(id, textOptions, colorOptions, route) {
     this.textOptions = textOptions
     this.colorOptions = colorOptions
     this.text = this.textOptions[0]
     this.color = this.colorOptions[0]
     this.route = route
+    this.id = id
   }
 
   toggleText() {
@@ -39,8 +40,3 @@ class Tab {
     return options[newIndex]
   }
 }
-
-export default {
-  colorOptions,
-  Tab
-};
