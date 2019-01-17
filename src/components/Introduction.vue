@@ -39,7 +39,7 @@
       <p>Hey there, future computer science student!</p>
       <p>The man you saw on the island is Bob. He got stranded and wants to get off the island. He has a computer, as 
         well as an internet cable going into the computer. He wants to access sos.io, a startup that wants to "change 
-        the world by making it easier then ever to report an emergency".</p>
+        the world by making it easier than ever to report an emergency".</p>
       <p>However, Bob has trouble connecting to the website. He's in dire need of a computer science student to fix these
         problems for him. If you scroll down you see what problems Bob's facing. Find out if computer science fits you and
         try to fix the problems.</p>
