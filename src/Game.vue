@@ -6,13 +6,11 @@
 <!-- This is the HTML part of the Game component -->
 <template>
   <div id="game">
-
     <!-- 
       Here we reference the Introduction component, it's template gets loaded here.The Introduction component emits the
       "startLayer" event with the game layer to be loaded as the argument. We then set the layer to the right layer.
     -->
-    <Introduction v-if="layer === GameLayers.Introduction" 
-                  @startLayer="layer = $event"/>
+    <Introduction v-if="layer === GameLayers.Introduction" @startLayer="layer = $event"/>
 
     <!-- We show the right layer depending on the layer value -->
     <PhysicalLayer v-if="layer === GameLayers.PhysicalLayer"/>
@@ -22,21 +20,21 @@
 
 <!-- This is the TypeScript part of the Game component. -->
 <script>
-import Vue from 'vue'
-import Vuex from 'vuex'
-import Introduction from './components/Introduction.vue'
-import PhysicalLayer from './components/PhysicalLayer.vue'
-import ApplicationLayer from './components/ApplicationLayer.vue'
-import { GameLayers } from './shared/gameLayers'
-import Tabs from './components/tabs'
+import Vue from "vue";
+import Vuex from "vuex";
+import Introduction from "./components/Introduction.vue";
+import PhysicalLayer from "./components/PhysicalLayer.vue";
+import ApplicationLayer from "./components/ApplicationLayer.vue";
+import { GameLayers } from "./shared/gameLayers";
+import Tabs from "./components/tabs";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export const ConnectionStatus = {
-  NO_CONNECTION: 'NO_CONNECTION',
-  USABILITY_PROBLEMS: 'USABILITY_PROBLEMS',
-  CONNECTED: 'CONNECTED'
-}
+  NO_CONNECTION: "NO_CONNECTION",
+  USABILITY_PROBLEMS: "USABILITY_PROBLEMS",
+  CONNECTED: "CONNECTED"
+};
 
 const store = new Vuex.Store({
   state: {
@@ -87,24 +85,30 @@ const store = new Vuex.Store({
     changeColor(state, field) {
       if (field.substring(0, 4) === "text") {
         if (field === "text1") {
-          state.color.text1 = state.color.text1 === "black" ? "yellow" : "black";
+          state.color.text1 =
+            state.color.text1 === "black" ? "yellow" : "black";
         } else if (field === "text2") {
-          state.color.text2 = state.color.text2 === "black" ? "yellow" : "black";
+          state.color.text2 =
+            state.color.text2 === "black" ? "yellow" : "black";
         } else if (field === "text3") {
-          state.color.text3 = state.color.text3 === "black" ? "yellow" : "black";
+          state.color.text3 =
+            state.color.text3 === "black" ? "yellow" : "black";
         }
       } else if (field.substring(0, 4) === "head") {
         if (field === "header1") {
-          state.color.header1 = state.color.header1 === "black" ? "yellow" : "black";
+          state.color.header1 =
+            state.color.header1 === "black" ? "yellow" : "black";
         } else if (field === "header2") {
-          state.color.header2 = state.color.header2 === "black" ? "yellow" : "black";
+          state.color.header2 =
+            state.color.header2 === "black" ? "yellow" : "black";
         } else if (field === "header3") {
-          state.color.header3 = state.color.header3 === "black" ? "yellow" : "black";
+          state.color.header3 =
+            state.color.header3 === "black" ? "yellow" : "black";
         }
       }
     },
     changeConnectionStatus(state, status) {
-      state.connectionStatus = status
+      state.connectionStatus = status;
     }
   }
 });
@@ -113,16 +117,16 @@ const store = new Vuex.Store({
  * This is the component code itself. It only exposes the current layer and all game layers to the template.
  */
 export default {
-  name: 'Game',
+  name: "Game",
   components: { Introduction, PhysicalLayer, ApplicationLayer },
   store,
   data() {
     return {
       layer: GameLayers.Introduction,
-      GameLayers,
-    }
-  },
-}
+      GameLayers
+    };
+  }
+};
 </script>
 
 <!-- 
@@ -136,6 +140,6 @@ export default {
 }
 
 * {
-  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  font-family: "Montserrat", Helvetica, Arial, sans-serif;
 }
 </style>
