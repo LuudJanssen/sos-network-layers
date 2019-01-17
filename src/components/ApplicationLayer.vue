@@ -1,5 +1,5 @@
 <!--
-  This is the applciation layer component which contains the application layer game
+  is the applciation layer component which contains the application layer game
 -->
 <template>
   <div class="application-layer">
@@ -9,7 +9,7 @@
         v-bind:class="{taskToggle, 'taskToggleOn':this.$store.state.showTaskList, 'taskToggleOff':!this.$store.state.showTaskList}"
         @click="toggle('showTaskList')"
       >
-        <b-button>{{ this.$store.state.showTaskList ? 'Open Tasks' : 'Close Tasks'}} &#128466;</b-button>
+        <b-button>{{ this.$store.state.showTaskList ? 'Close Tasks' : 'Open Tasks'}} &#128466;</b-button>
       </div>
       <NavBar></NavBar>
       <router-view/>
@@ -60,9 +60,6 @@ export default {
   height: 100%;
   text-align: center;
   padding-top: 20px;
-}
-
-.taskToggle {
 }
 
 .taskToggleOff {

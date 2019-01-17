@@ -47,7 +47,6 @@
           >
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p>
           </blockquote>
-        </p>
 
         <b-popover target="header3">
           <b-button @click="changeColor('header3')">Change Color</b-button>
@@ -72,20 +71,25 @@
   </div>
 </template>
 
+<script>
+import Vue from "vue";
+
+export default Vue.extend({
+  name: "AppHome",
+  methods: {
+    changeColor(field) {
+      this.$store.commit("changeColor", field);
+    }
+  }
+});
+</script>
+
 <style scoped>
 .box {
   width: 60%;
   height: 100%;
   padding: 30px;
   padding-left: 100px;
-}
-
-.red {
-  color: red;
-}
-
-.blue {
-  color: blue;
 }
 
 .yellow {

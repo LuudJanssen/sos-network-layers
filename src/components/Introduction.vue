@@ -36,12 +36,12 @@
     </b-row>
 
     <b-modal ref="modalExplanation" title="Please, help poor Bob" @hidden="explanationClosed()" centered cancel-disabled>
-      <p>Hey there, future web science student!</p>
+      <p>Hey there, future computer science student!</p>
       <p>The man you saw on the island is Bob. He got stranded and wants to get off the island. He has a computer, as 
         well as an internet cable going into the computer. He wants to access sos.io, a startup that wants to "change 
         the world by making it easier then ever to report an emergency".</p>
-      <p>However, Bob has trouble connecting to the website. He's in dire need of a web science student to fix these
-        problems for him. If you scroll down you see what problems Bob's facing. Find out if web science fits you and
+      <p>However, Bob has trouble connecting to the website. He's in dire need of a computer science student to fix these
+        problems for him. If you scroll down you see what problems Bob's facing. Find out if computer science fits you and
         try to fix the problems.</p>
       <p>Good luck!</p>
     </b-modal>
