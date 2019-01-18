@@ -56,8 +56,6 @@
 <script>
 import { GameLayers } from '../shared/gameLayers';
 
-console.log(GameLayers);
-
 class Game {
   constructor(text, gameLayer, disabled = false) {
     this.text = text;
