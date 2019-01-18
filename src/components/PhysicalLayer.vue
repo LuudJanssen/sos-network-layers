@@ -238,4 +238,11 @@
   .terminal .yellow {
     color: #FFCB6B;
   }
+
+  .cable {
+    border: 30px solid transparent;
+    border-image: url('../assets/cable-border.png') 30 stretch;
+    border-left: 0;
+    height: 75%;
+  }
 </style>
