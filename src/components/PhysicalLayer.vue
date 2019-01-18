@@ -15,7 +15,6 @@
           <b-col class="px-0">
             <!-- Router SVG -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272.37 207.54">
-              <title>router</title>
               <path fill="#2d2d2d"
                     d="M55.68,57.12l9.09,56.53L51.6,115.77,42.51,59.24,36.28,2.54c-.07-.68.57-1.38,1.61-1.87A6.81,6.81,0,0,1,39.76.1c2-.33,3.85.22,4.06,1.23Z"></path>
               <path fill="#212120"
@@ -46,6 +45,8 @@
               <path class="h"
                     d="M252.47,159.1H188.93a4.51,4.51,0,0,1-4.51-4.51h0a4.51,4.51,0,0,1,4.51-4.51h63.53a4.51,4.51,0,0,1,4.51,4.51h0A4.51,4.51,0,0,1,252.47,159.1Z"></path>
             </svg>
+
+            <div class="router-explanation py-3 px-3">These should be turned on</div>
           </b-col>
 
           <b-col class="px-0">
@@ -54,7 +55,7 @@
         </b-row>
         <b-row class="controls">
           <b-col>
-            <b-row>
+            <b-row class="py-5">
               <b-col>
                 <b-button v-for="command in commands" v-bind:key="command.name" @click="execute(command)">
                   Execute <code>{{ command.name }}</code> command
@@ -251,6 +252,36 @@
   .router {
     position: relative;
     background-color: #4194B5;
+  }
+
+  .router-explanation {
+    position: absolute;
+    background-color: rgba(255,255,255,.87);
+    border-radius: 4px;
+    width: 60%;
+    left: 10%;
+  }
+
+  .router-explanation:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 50%;
+    height: 20px;
+    border: 5px solid rgba(255,255,255,.87);
+    border-top: 0;
+    left: 21%;
+    top: -120%;
+  }
+
+  .router-explanation:after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: calc(120% - 20px);
+    left: calc(46% - 2px);
+    top: calc(-120% + 20px);
+    border: 2px solid rgba(255,255,255,.87);
   }
 
   .router-container {
