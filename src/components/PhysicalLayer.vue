@@ -35,7 +35,7 @@
               <circle fill="#c12d2d" cx="24.02" cy="154.59" r="8.63"></circle>
 
               <!-- The circle lights of the router. X coordinate is dependent of the array index -->
-              <circle v-for="(state, index) in state"
+              <circle v-for="(state, index) in lightStates"
                       v-bind:key="index"
                       v-bind:cx="78.14 + index * 17.06"
                       v-bind:fill="state ? '#2faf1c' : '#6d7c6b'"
@@ -180,15 +180,15 @@
         data() {
             return {
                 name: "PhysicalLayer",
-                state: [true, false, true, false],
+                lightStates: [true, false, true, false],
                 commands,
                 executedCommands,
             }
         },
         methods: {
             execute(command) {
-                const executedCommand = new command.class(this.state)
-                this.state = executedCommand.run()
+                const executedCommand = new command.class(this.lightStates)
+                this.lightStates = executedCommand.run()
                 this.executedCommands.push(executedCommand)
             }
         }
