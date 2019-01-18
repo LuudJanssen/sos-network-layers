@@ -4,8 +4,10 @@
 <template>
   <b-container fluid class="physical-layer-container">
     <b-row class="full-height-row">
-      <b-col cols="8">
-        <b-row class="router py-3">
+      <b-col cols="8" class="router-container">
+        <b-row class="router pt-5 pb-4">
+          <img src="../assets/seafloor-physical.svg" class="seafloor">
+
           <b-col class="px-0">
             <div class="cable"></div>
           </b-col>
@@ -50,10 +52,17 @@
             <div class="cable"></div>
           </b-col>
         </b-row>
-
-        <b-button v-for="command in commands" v-bind:key="command.name" @click="execute(command)">
-          Execute <code>{{ command.name }}</code> command
-        </b-button>
+        <b-row class="controls">
+          <b-col>
+            <b-row>
+              <b-col>
+                <b-button v-for="command in commands" v-bind:key="command.name" @click="execute(command)">
+                  Execute <code>{{ command.name }}</code> command
+                </b-button>
+              </b-col>
+            </b-row>
+          </b-col>
+        </b-row>
       </b-col>
 
       <!-- The terminal displaying code -->
@@ -198,7 +207,7 @@
 <style scoped>
   .physical-layer-container {
     height: 100%;
-    background-color: #4194B5;
+    background-color: #B98E56;
   }
 
   .full-height-row {
@@ -239,10 +248,32 @@
     color: #FFCB6B;
   }
 
+  .router {
+    position: relative;
+    background-color: #4194B5;
+  }
+
+  .router-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .controls {
+    flex: 1 1 auto;
+    background: url("../assets/seafloor-sand.svg")
+  }
+
   .cable {
     border: 30px solid transparent;
     border-image: url('../assets/cable-border.png') 30 stretch;
     border-left: 0;
-    height: 75%;
+    height: 85%;
+  }
+
+  .seafloor {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
   }
 </style>
