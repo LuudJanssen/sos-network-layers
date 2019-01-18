@@ -23,6 +23,9 @@
       <b-col cols="3"></b-col>
     </b-row>
     <b-row align-v="center" align-h="center" class="introduction-block">
+      <img src="../assets/seafloor-introduction.svg" class="seafloor seafloor-back" v-parallax="0.2">
+      <img src="../assets/seafloor-introduction-front.svg" class="seafloor" v-parallax="0.1">
+      <img src="../assets/seafloor-introduction-rocks.svg" class="seafloor-rocks">
       <div class="water"></div>
       <div class="cable"></div>
       <div class="games">
@@ -93,8 +96,6 @@ export default {
 <style scoped>
 .introduction {
   background-color: #4194B5;
-  height: 100%;
-  overflow: auto;
 }
 
 .introduction-block {
@@ -129,13 +130,31 @@ export default {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
+.seafloor {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.seafloor-back {
+  bottom: 48px;
+}
+
+.seafloor-rocks {
+  position: absolute;
+  bottom: 15px;
+  width: 45%;
+  right: 0;
+  z-index: 1;
+}
+
 .cable {
   border: 30px solid transparent;
   border-image: url('../assets/cable-border.png') 30 stretch;
   height: calc(150% - 24px);
   width: 50%;
   position: absolute;
-  bottom: 24px;
+  bottom: 72px;
   left: 50%;
 }
 
@@ -158,7 +177,7 @@ export default {
 }
 
 .game.disabled {
-  opacity: 0.5
+  opacity: 0.7
 }
 
 .game:after {
