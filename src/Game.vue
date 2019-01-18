@@ -26,7 +26,7 @@ import Introduction from "./components/Introduction.vue";
 import PhysicalLayer from "./components/PhysicalLayer.vue";
 import ApplicationLayer from "./components/ApplicationLayer.vue";
 import { GameLayers } from "./shared/gameLayers";
-import Tabs from "./components/tabs";
+import { Tab, colorOptions } from "./components/tabs";
 
 Vue.use(Vuex);
 
@@ -49,14 +49,49 @@ const store = new Vuex.Store({
       header3: "black"
     },
     tabs: [
-      new Tabs.Tab(["Island", "Home", "Welcome"], Tabs.colorOptions, "apphome"),
-      new Tabs.Tab(
-        ["Reporting", "Ahhhh", "Report SOS"],
-        Tabs.colorOptions,
+      new Tab(
+        "tab1",
+        ["Island", "Home", "Welcome", "Hello"],
+        colorOptions,
+        "apphome"
+      ),
+      new Tab(
+        "tab2",
+        ["Reporting", "Ahhhh", "Report SOS", "Stuck"],
+        colorOptions,
         "appform"
       ),
-      new Tabs.Tab(["History", "About us"], Tabs.colorOptions, ""),
-      new Tabs.Tab(["Core values", "delete"], Tabs.colorOptions, "")
+      new Tab(
+        "tab3",
+        ["History", "About us", "We", "Info about us"],
+        colorOptions,
+        ""
+      ),
+      new Tab(
+        "tab4",
+        ["Core values", "Tell me more", "Interesting", "More"],
+        colorOptions,
+        ""
+      )
+    ],
+    tabsData: [
+      //since I cannot read values of the class properly, this is added to circumvent reading from the class
+      {
+        color: colorOptions[0],
+        text: "Island"
+      },
+      {
+        color: colorOptions[0],
+        text: "Island"
+      },
+      {
+        color: colorOptions[0],
+        text: "Island"
+      },
+      {
+        color: colorOptions[0],
+        text: "Island"
+      }
     ],
     form: {
       showName: true,
@@ -64,6 +99,12 @@ const store = new Vuex.Store({
       showLong: true,
       showLat: true,
       showPrio: true
+    },
+    taskList: {
+      textCheck: false,
+      sosCheck: false,
+      formCheck: false,
+      complete: false
     }
   },
   mutations: {
@@ -109,6 +150,17 @@ const store = new Vuex.Store({
     },
     changeConnectionStatus(state, status) {
       state.connectionStatus = status;
+    },
+    set(state, param) {
+      if (param.field.substring(0, 6) === "textCh") {
+        state.taskList.textCheck = param.value;
+      } else if (param.field.substring(0, 6) === "sosChe") {
+        state.taskList.sosCheck = param.value;
+      } else if (param.field.substring(0, 6) === "formCh") {
+        state.taskList.formCheck = param.value;
+      } else if (param.field.substring(0, 6) === "comple") {
+        state.taskList.complete = param.value;
+      }
     }
   }
 });
