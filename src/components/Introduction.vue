@@ -10,19 +10,9 @@
       <b-col>
         <img src="../assets/island-detail.svg" class="introduction-island">
       </b-col>
-      <!-- <b-col cols="2">
-        <b-button :variant="'primary'" @click="$emit('startLayer', GameLayers.PhysicalLayer)">
-          Start Physical Layer Game
-        </b-button>
-      </b-col>
-      <b-col cols="2">
-        <b-button :variant="'primary'" @click="$emit('startLayer', GameLayers.ApplicationLayer)">
-          Start Application Layer Game
-        </b-button>
-      </b-col> -->
       <b-col cols="3"></b-col>
     </b-row>
-    <b-row align-v="center" align-h="center" class="introduction-block">
+    <b-row align-v="center" align-h="center" class="introduction-block pb-5">
       <img src="../assets/seafloor-introduction.svg" class="seafloor seafloor-back" v-parallax="0.2">
       <img src="../assets/seafloor-introduction-front.svg" class="seafloor" v-parallax="0.1">
       <img src="../assets/seafloor-introduction-rocks.svg" class="seafloor-rocks">
@@ -100,7 +90,6 @@ export default {
 
 .introduction-block {
   position: relative;
-  height: 100%;
 }
 
 .introduction-island {
