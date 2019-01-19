@@ -2,12 +2,22 @@
   This is the component for the physical layer, which contains the physical layer game.
 -->
 <template>
-  <b-container fluid class="physical-layer-container">
-    <b-row class="full-height-row">
-      <b-col cols="8" class="router-container">
-        <b-row class="router pt-5 pb-4">
-          <img src="../assets/seafloor-physical.svg" class="seafloor">
+  <b-container fluid class="physical-layer-container h-100">
+    <b-row class="h-100">
 
+      <!-- Left column that contains the router and the controls -->
+      <b-col cols="8" class="h-100 router-container">
+
+        <!-- Test mode dark overlay -->
+        <div class="overlay position-absolute w-100 h-100" v-if="testMode"></div>
+
+        <!-- Row that contains the router, cables and background -->
+        <b-row class="router pt-5 pb-4">
+
+          <!-- Seafloor with rocks and plants -->
+          <img src="../assets/seafloor-physical.svg" class="w-100 seafloor">
+
+          <!-- Left cable -->
           <b-col class="px-0">
             <div class="cable"></div>
           </b-col>
@@ -46,24 +56,73 @@
                     d="M252.47,159.1H188.93a4.51,4.51,0,0,1-4.51-4.51h0a4.51,4.51,0,0,1,4.51-4.51h63.53a4.51,4.51,0,0,1,4.51,4.51h0A4.51,4.51,0,0,1,252.47,159.1Z"></path>
             </svg>
 
+            <!-- Explanation of the router lights -->
             <div class="router-explanation py-3 px-3">These should be turned on</div>
           </b-col>
 
+          <!-- Right cable -->
           <b-col class="px-0">
             <div class="cable"></div>
           </b-col>
         </b-row>
-        <b-row class="controls">
-          <b-col>
-            <b-row class="py-5">
-              <b-col>
-                <b-button v-for="command in commands" v-bind:key="command.name" @click="execute(command)">
-                  Execute <code>{{ command.name }}</code> command
-                </b-button>
-              </b-col>
-            </b-row>
+
+        <!-- Row that contains the computer with the controls and test mode -->
+        <b-row class="controls" align-h="center">
+          <b-col cols="8" class="laptop-column">
+
+            <!-- The laptop including buttons and test mode -->
+            <div class="laptop-container">
+
+              <!-- The laptop background svg -->
+              <img src="../assets/laptop.svg" class="laptop">
+
+              <!-- Button to enable test mode -->
+              <div class="screen" v-if="!testMode">
+                <b-row class="h-100 align-content-center" align-v="center" align-h="center">
+                  <h2 class="pb-3 w-100 text-center">Test what the commands do:</h2>
+                  <b-button :size="'lg'" :variant="'warning'" @click="testMode = !testMode">
+                    <i class="material-icons align-middle">bug_report</i> Enable test mode
+                  </b-button>
+                </b-row>
+              </div>
+
+              <!-- Test mode content -->
+              <div class="screen px-3 py-3" v-if="testMode">
+                <b-row class="h-100 align-content-center px-3" align-v="center" align-h="center">
+
+                  <b-button :size="'lg'" :variant="'warning'" @click="testMode = !testMode" class="mb-3">
+                    <i class="material-icons align-middle">close</i> Disable test mode
+                  </b-button>
+
+                  <h2 class="py-3 w-100 text-center">Test state:</h2>
+                  <p class="text-center">Toggle the state of the ports by clicking on them and then execute a command to see what it would do.</p>
+
+                  <b-button-group>
+                    <b-button v-for="(state, index) in testStates"
+                              v-bind:key="index"
+                              v-bind:variant="state ? 'success' : 'danger'"
+                              @click="toggleTestState(index)">
+                      Port {{ index }}
+                    </b-button>
+                  </b-button-group>
+                </b-row>
+              </div>
+
+              <!-- Keyboard buttons -->
+              <div class="keyboard">
+                <b-row align-h="around" class="h-100 px-3 align-items-center">
+                  <b-button v-for="command in commands" v-bind:key="command.name" @click="execute(command)" :variant="testMode ? 'primary' : 'warning'" :size="'lg'">
+                    <i class="material-icons align-middle">{{ command.icon }}</i>
+                    <samp> {{ command.name }}</samp>
+                  </b-button>
+                </b-row>
+              </div>
+
+            </div>
+
           </b-col>
         </b-row>
+
       </b-col>
 
       <!-- The terminal displaying code -->
@@ -76,7 +135,7 @@
 
             <!-- The command line -->
             <code><span class="blue">god</span>@<span class="green">underwater-router:</span><span
-                class="yellow">~</span>$ {{ command.name }}</code>
+                class="yellow">~</span>$ {{ command.test ? 'test ' : '' }}{{ command.name }}{{ command.test ? ' --testStates ' + command.originalState.join(' ') : '' }}</code>
 
             <!-- The result line -->
             <code>
@@ -99,8 +158,10 @@
 
 <script>
     class Command {
-        constructor(state, name) {
+        constructor(state, test, name) {
+            this.originalState = state.map(state => state | 0)
             this.state = state.slice()
+            this.test = test
             this.executed = false
             this.name = name
         }
@@ -110,8 +171,8 @@
      * Command that returns the inverse state for the first light.
      */
     class BootstrapCommand extends Command {
-        constructor(state) {
-            super(state, "bootstrap")
+        constructor(state, test) {
+            super(state, test, "bootstrap")
         }
 
         run() {
@@ -125,8 +186,8 @@
      * Command that sets the state of the second light to the inverse of the first light.
      */
     class LinkCommand extends Command {
-        constructor(state) {
-            super(state, "link")
+        constructor(state, test) {
+            super(state, test, "link")
         }
 
         run() {
@@ -140,8 +201,8 @@
      * Command that sets the state of the third light to the XOR of the first two lights.
      */
     class FlashCommand extends Command {
-        constructor(state) {
-            super(state, "flash")
+        constructor(state, test) {
+            super(state, test, "flash")
         }
 
         run() {
@@ -157,8 +218,8 @@
      * the fourth light.
      */
     class ConfigCommand extends Command {
-        constructor(state) {
-            super(state, "config")
+        constructor(state, test) {
+            super(state, test, "config")
         }
 
         run() {
@@ -171,15 +232,19 @@
     const commands = [
         {
             name: "bootstrap",
+            icon: "build",
             class: BootstrapCommand,
         }, {
             name: "link",
+            icon: "link",
             class: LinkCommand,
         }, {
             name: "flash",
+            icon: "flash_on",
             class: FlashCommand,
         }, {
             name: "config",
+            icon: "settings",
             class: ConfigCommand,
         }
     ]
@@ -191,15 +256,31 @@
             return {
                 name: "PhysicalLayer",
                 lightStates: [true, false, true, false],
+                testStates: [false, false, false, false],
+                testMode: false,
                 commands,
                 executedCommands,
             }
         },
         methods: {
             execute(command) {
-                const executedCommand = new command.class(this.lightStates)
-                this.lightStates = executedCommand.run()
+                const state = this.testMode ? this.testStates : this.lightStates
+
+                const executedCommand = new command.class(state, this.testMode)
+                const newState = executedCommand.run()
+
+                if (this.testMode) {
+                    this.testStates = newState
+                } else {
+                    this.lightStates = newState
+                }
+
                 this.executedCommands.push(executedCommand)
+            },
+            toggleTestState(index) {
+                const newState = this.testStates.slice()
+                newState[index] = !newState[index]
+                this.testStates = newState
             }
         }
     };
@@ -207,12 +288,7 @@
 
 <style scoped>
   .physical-layer-container {
-    height: 100%;
-    background-color: #B98E56;
-  }
-
-  .full-height-row {
-    height: 100%;
+    background-color: #B98B54;
   }
 
   .terminal {
@@ -230,7 +306,7 @@
   .terminal code {
     display: block;
     color: #B0BEC5;
-    font-size: 1.2em;
+    font-size: 1em;
   }
 
   .terminal .blue {
@@ -247,6 +323,13 @@
 
   .terminal .yellow {
     color: #FFCB6B;
+  }
+
+  .overlay {
+    left: 0;
+    top: 0;
+    z-index: 1;
+    background-color: rgba(0,0,0,0.7)
   }
 
   .router {
@@ -285,7 +368,6 @@
   }
 
   .router-container {
-    height: 100%;
     display: flex;
     flex-direction: column;
   }
@@ -293,6 +375,37 @@
   .controls {
     flex: 1 1 auto;
     background: url("../assets/seafloor-sand.svg")
+  }
+
+  .laptop-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+  }
+  
+  .laptop-container {
+    position: relative;
+    bottom: -10%;
+    z-index: 2;
+    filter: drop-shadow(0 5px 20px rgba(0,0,0,0.3))
+  }
+
+  .screen {
+    position: absolute;
+    width: 66%;
+    left: 17%;
+    height: 62%;
+    bottom: 32%;
+  }
+
+  .keyboard {
+    position: absolute;
+    width: 90%;
+    bottom: 14%;
+    left: 5%;
+    height: 12%;
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.6))
   }
 
   .cable {
@@ -303,7 +416,6 @@
   }
 
   .seafloor {
-    width: 100%;
     position: absolute;
     bottom: 0;
   }
