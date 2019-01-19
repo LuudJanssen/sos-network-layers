@@ -6,15 +6,7 @@
 <!-- This is the HTML part of the Game component -->
 <template>
   <div id="game">
-    <!-- 
-      Here we reference the Introduction component, it's template gets loaded here.The Introduction component emits the
-      "startLayer" event with the game layer to be loaded as the argument. We then set the layer to the right layer.
-    -->
-    <Introduction v-if="layer === GameLayers.Introduction" @startLayer="layer = $event"/>
-
-    <!-- We show the right layer depending on the layer value -->
-    <PhysicalLayer v-if="layer === GameLayers.PhysicalLayer"/>
-    <ApplicationLayer v-if="layer === GameLayers.ApplicationLayer"/>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -22,10 +14,6 @@
 <script>
 import Vue from "vue";
 import Vuex from "vuex";
-import Introduction from "./components/Introduction.vue";
-import PhysicalLayer from "./components/PhysicalLayer.vue";
-import ApplicationLayer from "./components/ApplicationLayer.vue";
-import { GameLayers } from "./shared/gameLayers";
 import { Tab, colorOptions } from "./components/tabs";
 
 Vue.use(Vuex);
@@ -170,14 +158,7 @@ const store = new Vuex.Store({
  */
 export default {
   name: "Game",
-  components: { Introduction, PhysicalLayer, ApplicationLayer },
   store,
-  data() {
-    return {
-      layer: GameLayers.Introduction,
-      GameLayers
-    };
-  }
 };
 </script>
 
