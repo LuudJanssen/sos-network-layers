@@ -120,7 +120,7 @@
                 <b-row class="h-100 align-content-center px-3" align-v="center" align-h="center">
 
                   <h2 class="py-3 w-100 text-center">
-                    <i class="material-icons align-middle" style="font-size: 36px;">check</i> Everything works!
+                    <i class="material-icons align-middle md-36">check</i> Everything works!
                   </h2>
                   <p>The router works, Bob's connection is restored! Good job! You can return to check if there are any
                     other problems to solve <i>(there are)</i>.</p>
@@ -192,7 +192,7 @@
       </p>
     </b-modal>
 
-    <i class="help-icon material-icons text-light px-3 py-3 position-absolute" @click="showExplanation()">help</i>
+    <i class="help-icon material-icons md-36 text-light px-3 py-3 position-absolute" @click="showExplanation()">help</i>
   </b-container>
 </template>
 
@@ -477,4 +477,6 @@
     position: absolute;
     bottom: 0;
   }
+
+  .material-icons.md-36 { font-size: 36px; }
 </style>
