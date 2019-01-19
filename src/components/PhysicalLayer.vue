@@ -57,7 +57,14 @@
             </svg>
 
             <!-- Explanation of the router lights -->
-            <div class="router-explanation py-3 px-3">These should be turned on</div>
+            <div class="router-explanation py-3 px-3" v-bind:class="{ 'bg-success text-white': finished }">
+              <span v-if="!finished">These should be turned on</span>
+
+              <span v-if="finished">
+                <i class="material-icons align-middle">check</i>
+                <span class="align-middle"> Router works, nice!</span>
+              </span>
+            </div>
           </b-col>
 
           <!-- Right cable -->
@@ -77,7 +84,7 @@
               <img src="../assets/laptop.svg" class="laptop">
 
               <!-- Button to enable test mode -->
-              <div class="screen" v-if="!testMode">
+              <div class="screen" v-if="!testMode && !finished">
                 <b-row class="h-100 align-content-center" align-v="center" align-h="center">
                   <h2 class="pb-3 w-100 text-center">Test what the commands do:</h2>
                   <b-button :size="'lg'" :variant="'warning'" @click="testMode = !testMode">
@@ -87,7 +94,7 @@
               </div>
 
               <!-- Test mode content -->
-              <div class="screen px-3 py-3" v-if="testMode">
+              <div class="screen px-3 py-3" v-if="testMode && !finished">
                 <b-row class="h-100 align-content-center px-3" align-v="center" align-h="center">
 
                   <b-button :size="'lg'" :variant="'warning'" @click="testMode = !testMode" class="mb-3">
@@ -108,8 +115,20 @@
                 </b-row>
               </div>
 
+              <!-- Finished content -->
+              <div class="screen px-5 py-3" v-if="finished">
+                <b-row class="h-100 align-content-center px-3" align-v="center" align-h="center">
+
+                  <h2 class="py-3 w-100 text-center">
+                    <i class="material-icons align-middle" style="font-size: 36px;">check</i> Everything works!
+                  </h2>
+                  <p>The router works, Bob's connection is restored! Good job! You can return to check if there are any
+                    other problems to solve <i>(there are)</i>.</p>
+                </b-row>
+              </div>
+
               <!-- Keyboard buttons -->
-              <div class="keyboard">
+              <div class="keyboard" v-if="!finished">
                 <b-row align-h="around" class="h-100 px-3 align-items-center">
                   <b-button v-for="command in commands" v-bind:key="command.name" @click="execute(command)" :variant="testMode ? 'primary' : 'warning'" :size="'lg'">
                     <i class="material-icons align-middle">{{ command.icon }}</i>
@@ -162,13 +181,15 @@
       </p>
       <p>
         You can control this router from a distance by sending commands. However, the commands aren't simple <code>turn
-        port x on</code> commands. They seem to enable and disable ports based on the states of other ports. Luckily,
-        you can simulate a router and hence test what the commands will do given a certain state.
+        port x on</code> commands. They seem to enable and disable ports based on the states of other ports so you need
+        to use logical thinking to determine what the buttons do.
+      </p>
+      <p>
+        Luckily, you can simulate a router and hence test what the commands will do given a certain state.
       </p>
       <p>
         Try to enable all ports to fix Bob's connection, good luck!
       </p>
-      <p>Good luck!</p>
     </b-modal>
 
     <i class="help-icon material-icons text-light px-3 py-3 position-absolute" @click="showExplanation()">help</i>
@@ -279,6 +300,11 @@
                 testMode: false,
                 commands,
                 executedCommands,
+            }
+        },
+        computed: {
+            finished() {
+                return this.lightStates.every(state => state === true)
             }
         },
         methods: {
