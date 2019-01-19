@@ -19,12 +19,14 @@
       <div class="water"></div>
       <div class="cable"></div>
       <div class="games">
-        <div class="game"
-             v-bind:class="{ 'disabled': game.disabled, 'left': index % 2 === 0, 'right': index % 2 === 1 }"
-             v-for="(game, index) in games"
-             :key="game.text" @click="$emit('startLayer', game.gameLayer)">
+        <router-link tag="div"
+                     class="game"
+                     v-bind:class="{ 'disabled': game.disabled, 'left': index % 2 === 0, 'right': index % 2 === 1 }"
+                     v-for="(game, index) in games"
+                     v-bind:key="game.text"
+                     v-bind:to="game.route">
           {{ game.text }}
-        </div>
+        </router-link>
       </div>
     </b-row>
 
@@ -51,19 +53,19 @@
 import { GameLayers } from "../shared/gameLayers";
 
 class Game {
-  constructor(text, gameLayer, disabled = false) {
+  constructor(text, route, disabled = false) {
     this.text = text;
-    this.gameLayer = gameLayer;
+    this.route = route;
     this.disabled = disabled;
   }
 }
 
 const games = [
-  new Game("Usability", GameLayers.ApplicationLayer),
-  new Game("Security", null, true),
-  new Game("Routing", null, true),
-  new Game("Data Transport", null, true),
-  new Game("Connection", GameLayers.PhysicalLayer)
+  new Game("Usability", '/usability'),
+  new Game("Security", '', true),
+  new Game("Routing", '', true),
+  new Game("Data Transport", '', true),
+  new Game("Connection", '/connection')
 ];
 
 export default {

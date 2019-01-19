@@ -21,7 +21,6 @@
 <script>
 import NavBar from "./NavBar";
 import TaskList from "./TaskList";
-import Tabs from "./tabs";
 
 export default {
   name: "ApplicationLayer",

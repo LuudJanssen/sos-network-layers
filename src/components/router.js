@@ -4,30 +4,41 @@ import AppHome from './AppHome.vue'
 import AppForm from './AppForm.vue'
 import Introduction from "./Introduction";
 import PhysicalLayer from "./PhysicalLayer";
+import ApplicationLayer from "./ApplicationLayer";
 
 Vue.use(Router)
 
 export default new Router({
     routes: [
         {
-            path: '/AppHome',
-            name: 'apphome',
-            component: AppHome
+            path: '/',
+            redirect: '/island'
         },
         {
-            path: '/AppForm',
-            name: 'appform',
-            component: AppForm
+            path: '/island',
+            component: Introduction
         },
         {
             path: '/connection',
-            name: 'connection',
             component: PhysicalLayer
         },
         {
-            path: '/',
-            name: 'introduction',
-            component: Introduction
-        }
+            path: '/usability',
+            component: ApplicationLayer,
+            children: [
+                {
+                    path: '/',
+                    redirect: 'home'
+                },
+                {
+                    path: 'home',
+                    component: AppHome
+                },
+                {
+                    path: 'form',
+                    component: AppForm
+                }
+            ]
+        },
     ]
 })

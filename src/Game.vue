@@ -41,13 +41,13 @@ const store = new Vuex.Store({
         "tab1",
         ["Island", "Home", "Welcome", "Hello"],
         colorOptions,
-        "apphome"
+        "home"
       ),
       new Tab(
         "tab2",
         ["Reporting", "Ahhhh", "Report SOS", "Stuck"],
         colorOptions,
-        "appform"
+        "form"
       ),
       new Tab(
         "tab3",
