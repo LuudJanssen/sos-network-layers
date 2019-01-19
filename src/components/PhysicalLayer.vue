@@ -306,7 +306,7 @@
   .terminal code {
     display: block;
     color: #B0BEC5;
-    font-size: 1em;
+    font-size: 1.1em;
   }
 
   .terminal .blue {
