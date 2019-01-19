@@ -153,6 +153,25 @@
         </div>
       </b-col>
     </b-row>
+
+    <!-- Explanation modal -->
+    <b-modal ref="modalExplanation" title="Please, fix Bob's connection" centered ok-only>
+      <p>
+        Okay, so Bob's internet connection is down and the problem seems to be an underwater router near Bob's island.
+        The router only has two active ports, while all four ports should be activated.
+      </p>
+      <p>
+        You can control this router from a distance by sending commands. However, the commands aren't simple <code>turn
+        port x on</code> commands. They seem to enable and disable ports based on the states of other ports. Luckily,
+        you can simulate a router and hence test what the commands will do given a certain state.
+      </p>
+      <p>
+        Try to enable all ports to fix Bob's connection, good luck!
+      </p>
+      <p>Good luck!</p>
+    </b-modal>
+
+    <i class="help-icon material-icons text-light px-3 py-3 position-absolute" @click="showExplanation()">help</i>
   </b-container>
 </template>
 
@@ -281,12 +300,25 @@
                 const newState = this.testStates.slice()
                 newState[index] = !newState[index]
                 this.testStates = newState
+            },
+            showExplanation() {
+                this.$refs.modalExplanation.show();
             }
+        },
+        mounted() {
+            // This shows the explanation pop-up on start
+            this.showExplanation()
         }
     };
 </script>
 
 <style scoped>
+  .help-icon {
+    right: 0;
+    top: 0;
+    cursor: pointer;
+  }
+
   .physical-layer-container {
     background-color: #B98B54;
   }
