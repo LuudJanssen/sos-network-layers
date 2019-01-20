@@ -45,7 +45,7 @@
       <p>Good luck!</p>
     </b-modal>
 
-    <div class="status">Connection status: {{ this.$store.state.connectionStatus }}</div>
+    <div class="status">Connection status: {{ this.$store.getters.connectionStatus }}</div>
   </b-container>
 </template>
 

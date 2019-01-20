@@ -50,7 +50,6 @@
         state: {
             hadIntroduction: false,
             showTaskList: true,
-            connectionStatus: ConnectionStatus.NO_CONNECTION,
             color: {
                 text1: "black",
                 text2: "black",
