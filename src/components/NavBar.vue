@@ -1,4 +1,27 @@
 <template>
+  <b-navbar toggleable="sm" type="dark" variant="dark">
+    <b-container>
+      <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
+
+      <b-navbar-brand>
+        <i class="material-icons md-36 d-inline-block px-1 align-middle">announcement</i>
+        sos.io
+      </b-navbar-brand>
+      <b-collapse is-nav id="nav_collapse">
+        <b-navbar-nav>
+          <b-nav-item
+              v-for="tab in this.$store.state.tabs"
+              v-bind:id="tab.id"
+              v-bind:to="tab.route"
+              v-bind:style="{ backgroundColor: tab.color.backgroundColor, color: tab.color.color }"
+              v-bind:key="tab.text">
+            {{ tab.text }}
+          </b-nav-item>
+        </b-navbar-nav>
+      </b-collapse>
+    </b-container>
+  </b-navbar>
+  <!--
   <div>
     <b-nav class="nav">
       <b-nav-item
@@ -20,7 +43,7 @@
 
       <b-button @click="tab.toggleColor()">Change Color</b-button>
     </b-popover>
-  </div>
+  </div>-->
 </template>
 
 <style scoped>

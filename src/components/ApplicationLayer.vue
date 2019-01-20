@@ -2,7 +2,14 @@
   is the applciation layer component which contains the application layer game
 -->
 <template>
-  <div class="application-layer">
+  <div>
+    <NavBar></NavBar>
+
+    <b-container fluid>
+      <router-view></router-view>
+    </b-container>
+  </div>
+  <!--<div class="application-layer">
     <div>
       <h1>Application Layer</h1>
       <div
@@ -15,7 +22,7 @@
       <router-view/>
     </div>
     <TaskList></TaskList>
-  </div>
+  </div>-->
 </template>
 
 <script>
