@@ -120,7 +120,9 @@
         },
         getters: {
             connectionStatus: (state, getters) => {
-                console.log(state, getters)
+                if (getters['usability/finished']) {
+                    return ConnectionStatus.CONNECTED
+                }
 
                 if (getters['connection/finished']) {
                     return ConnectionStatus.USABILITY_PROBLEMS
