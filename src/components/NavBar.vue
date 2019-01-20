@@ -4,8 +4,8 @@
       <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
       <b-navbar-brand>
-        <i class="material-icons md-36 d-inline-block px-1 align-middle">announcement</i>
-        sos.io
+        <i class="material-icons md-36 d-inline-block pr-2 align-middle">announcement</i>
+        <span class="align-middle">sos.io</span>
       </b-navbar-brand>
       <b-collapse is-nav id="nav_collapse">
         <b-navbar-nav>

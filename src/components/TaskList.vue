@@ -1,4 +1,17 @@
 <template>
+  <div class="bg-light">
+    <b-navbar toggleable="sm" type="dark" variant="primary">
+      <b-navbar-brand>
+        <i class="material-icons md-36 d-inline-block pr-2 align-middle">list</i>
+        <span class="align-middle">Task List</span>
+      </b-navbar-brand>
+      <b-navbar-brand class="close-button ml-auto" @click="$store.commit('usability/toggleTaskList')">
+        <span class="align-middle">Close</span>
+        <i class="material-icons md-36 d-inline-block pl-2 align-middle">close</i>
+      </b-navbar-brand>
+    </b-navbar>
+  </div>
+  <!--
   <div class="TaskList" v-if="this.$store.state.showTaskList">
     <b-button @click="checkTasks()" class="checkButton">Check tasks</b-button>
     <div>{{ this.$store.state.taskList.textCheck ? '&#10004;' : '&#10060;' }} Change navigation menu text</div>
@@ -10,6 +23,7 @@
       v-if="this.$store.state.taskList.complete"
     >Complete application</b-button>
   </div>
+  -->
 </template>
 
 <script>
@@ -123,6 +137,11 @@ export default Vue.extend({
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+.close-button {
+  cursor: pointer;
+  user-select: none;
 }
 
 .checkButton {

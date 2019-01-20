@@ -1,5 +1,77 @@
 <template>
-  <div class="app-home">
+  <main>
+    <b-row class="island-backdrop" align-h="center">
+      <b-container class="text-center py-5">
+        <h1 class="display-2 text-light">Stuck on an island?</h1>
+        <h1 class="display-4 text-light">sos.io is here to save you!</h1>
+        <b-row align-h="center" class="py-3 text-light">
+          <b-col cols="8">
+            <p class="lead">
+              Sos.io is an organization that cares about <b>you</b>. When you are in an emergency you want to be helped as
+              fast as possible and you want to be helped as friendly as possible.
+            </p>
+            <p class="lead">
+              Sos.io offers premium service in case of an emergency. We have state of the art transport to pick you up
+              and for a small price you can receive immediate medical care and also enjoy our built-in wellness centers
+              available on all transport methods.
+            </p>
+            <b-button size="lg" variant="primary" class="mt-3">
+              <i class="material-icons md-36 align-middle mr-3">cloud_download</i>
+              <span class="align-middle">Download the brochure</span>
+            </b-button>
+          </b-col>
+        </b-row>
+      </b-container>
+    </b-row>
+    <b-row class="pt-5" align-h="center">
+      <b-container class="text-center">
+        <h1>Our latest innovations</h1>
+
+        <b-row class="py-5">
+          <b-col cols="4">
+            <i class="material-icons md-128">directions_boat</i>
+            <h4 class="py-3">Boat rescue</h4>
+          </b-col>
+          <b-col cols="4">
+            <i class="material-icons md-128">360</i>
+            <h4 class="py-3">360° feedback integration</h4>
+          </b-col>
+          <b-col cols="4">
+            <i class="material-icons md-128">local_bar</i>
+            <h4 class="py-3">In-transfer bar</h4>
+          </b-col>
+        </b-row>
+      </b-container>
+    </b-row>
+    <b-row class="bg-warning text-white py-5">
+      <b-container class="text-center">
+        <h1>In case of an emergency</h1>
+
+        <b-row class="pt-5 pb-1">
+          <b-col cols="4">
+            <h2>
+              <i class="material-icons md-36 align-middle pr-3">call</i>
+              <span class="align-middle">077-1234567</span>
+            </h2>
+          </b-col>
+          <b-col cols="4">
+            <router-link tag="h2" to="form">
+              <i class="material-icons md-36 align-middle pr-3">link</i>
+              <span class="align-middle">Fill in our form</span>
+            </router-link>
+          </b-col>
+          <b-col cols="4">
+            <h2>
+              <i class="material-icons md-36 align-middle pr-3">record_voice_over</i>
+              <span class="align-middle">Scream for help</span>
+            </h2>
+          </b-col>
+        </b-row>
+      </b-container>
+    </b-row>
+  </main>
+
+  <!--<div class="app-home">
     <div class="box">
       <div>
         <h1 id="header1"
@@ -69,7 +141,7 @@
         </p>
       </div>
     </div>
-  </div>
+  </div>-->
 </template>
 
 <script>
@@ -86,6 +158,14 @@
 </script>
 
 <style scoped>
+  .island-backdrop {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../assets/sos-io-island-man.jpg") no-repeat center bottom;
+    background-size: cover;
+  }
+
+  .material-icons.md-36 { font-size: 36px; }
+  .material-icons.md-128 { font-size: 128px; }
+
     .box {
       width: 60%;
       height: 100%;
