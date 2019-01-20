@@ -15,14 +15,21 @@
     import Vue from "vue";
     import Vuex from "vuex";
     import {Tab, colorOptions} from "./components/tabs";
+    import { ConnectionStatus } from "./shared/connectionStatus";
 
     Vue.use(Vuex);
 
-    export const ConnectionStatus = {
-        NO_CONNECTION: "NO_CONNECTION",
-        USABILITY_PROBLEMS: "USABILITY_PROBLEMS",
-        CONNECTED: "CONNECTED"
-    };
+    const introductionModule = {
+        namespaced: true,
+        state: {
+            hadExplanation: false
+        },
+        mutations: {
+            explanationShown(state) {
+                state.hadExplanation = true
+            }
+        }
+    }
 
     const connectionModule = {
         namespaced: true,
@@ -52,11 +59,11 @@
 
     const store = new Vuex.Store({
         modules: {
+            introduction: introductionModule,
             connection: connectionModule,
             usability: usabilityModule
         },
         state: {
-            hadIntroduction: false,
             showTaskList: true,
             color: {
                 text1: "black",
