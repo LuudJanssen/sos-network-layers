@@ -46,7 +46,7 @@
               <circle fill="#c12d2d" cx="24.02" cy="154.59" r="8.63"></circle>
 
               <!-- The circle lights of the router. X coordinate is dependent of the array index -->
-              <circle v-for="(state, index) in this.$store.state.connection.lights"
+              <circle v-for="(state, index) in lights"
                       v-bind:key="index"
                       v-bind:cx="78.14 + index * 17.06"
                       v-bind:fill="state ? '#2faf1c' : '#6d7c6b'"
@@ -57,10 +57,10 @@
             </svg>
 
             <!-- Explanation of the router lights -->
-            <div class="router-explanation py-3 px-3" v-bind:class="{ 'bg-success text-white': this.$store.getters['connection/finished'] }">
-              <span v-if="!this.$store.getters['connection/finished']">These should be turned on</span>
+            <div class="router-explanation py-3 px-3" v-bind:class="{ 'bg-success text-white': finished }">
+              <span v-if="!finished">These should be turned on</span>
 
-              <span v-if="this.$store.getters['connection/finished']">
+              <span v-if="finished">
                 <i class="material-icons align-middle">check</i>
                 <span class="align-middle"> Router works, nice!</span>
               </span>
@@ -84,7 +84,7 @@
               <img src="../assets/laptop.svg" class="laptop">
 
               <!-- Button to enable test mode -->
-              <div class="screen" v-if="!testMode && !this.$store.getters['connection/finished']">
+              <div class="screen" v-if="!testMode && !finished">
                 <b-row class="h-100 align-content-center" align-v="center" align-h="center">
                   <h2 class="pb-3 w-100 text-center">Test what the commands do:</h2>
                   <b-button :size="'lg'" :variant="'warning'" @click="testMode = !testMode">
@@ -94,7 +94,7 @@
               </div>
 
               <!-- Test mode content -->
-              <div class="screen px-3 py-3" v-if="testMode && !this.$store.getters['connection/finished']">
+              <div class="screen px-3 py-3" v-if="testMode && !finished">
                 <b-row class="h-100 align-content-center px-3" align-v="center" align-h="center">
 
                   <b-button :size="'lg'" :variant="'warning'" @click="testMode = !testMode" class="mb-3">
@@ -116,7 +116,7 @@
               </div>
 
               <!-- Finished content -->
-              <div class="screen px-5 py-3" v-if="this.$store.getters['connection/finished']">
+              <div class="screen px-5 py-3" v-if="finished">
                 <b-row class="h-100 align-content-center px-3" align-v="center" align-h="center">
 
                   <h2 class="py-3 w-100 text-center">
@@ -128,7 +128,7 @@
               </div>
 
               <!-- Keyboard buttons -->
-              <div class="keyboard" v-if="!this.$store.getters['connection/finished']">
+              <div class="keyboard" v-if="!finished">
                 <b-row align-h="around" class="h-100 px-3 align-items-center">
                   <b-button v-for="command in commands" v-bind:key="command.name" @click="execute(command)" :variant="testMode ? 'primary' : 'warning'" :size="'lg'">
                     <i class="material-icons align-middle">{{ command.icon }}</i>
@@ -174,7 +174,11 @@
     </b-row>
 
     <!-- Explanation modal -->
-    <b-modal ref="modalExplanation" title="Please, fix Bob's connection" centered ok-only>
+    <b-modal @hidden="explanationShown()"
+             ref="modalExplanation"
+             title="Please, fix Bob's connection"
+             centered
+             ok-only>
       <p>
         Okay, so Bob's internet connection is down and the problem seems to be an underwater router near Bob's island.
         The router only has two active ports, while all four ports should be activated.
@@ -193,10 +197,15 @@
     </b-modal>
 
     <i class="help-icon material-icons md-36 text-light px-3 py-3 position-absolute" @click="showExplanation()">help</i>
+    <router-link tag="i" to="/island" class="back-icon material-icons md-36 text-light px-3 py-3 position-absolute">arrow_back</router-link>
   </b-container>
 </template>
 
 <script>
+    import { createNamespacedHelpers } from 'vuex'
+
+    const { mapMutations, mapState, mapGetters } = createNamespacedHelpers('connection')
+
     class Command {
         constructor(state, test, name) {
             this.originalState = state.map(state => state | 0)
@@ -301,9 +310,14 @@
                 executedCommands,
             }
         },
+        computed: {
+            ...mapState(['lights', 'hadExplanation']),
+            ...mapGetters(['finished'])
+        },
         methods: {
+            ...mapMutations(['setLights', 'explanationShown']),
             execute(command) {
-                const state = this.testMode ? this.testStates : this.$store.state.connection.lights
+                const state = this.testMode ? this.testStates : this.lights
 
                 const executedCommand = new command.class(state, this.testMode)
                 const newState = executedCommand.run()
@@ -311,7 +325,7 @@
                 if (this.testMode) {
                     this.testStates = newState
                 } else {
-                    this.$store.commit('connection/setLights', newState)
+                    this.setLights(newState)
                 }
 
                 this.executedCommands.push(executedCommand)
@@ -327,16 +341,26 @@
         },
         mounted() {
             // This shows the explanation pop-up on start
-            this.showExplanation()
+            if (!this.hadExplanation) {
+                this.showExplanation()
+            }
         }
     };
 </script>
 
 <style scoped>
-  .help-icon {
-    right: 0;
+  .help-icon,
+  .back-icon {
     top: 0;
     cursor: pointer;
+  }
+
+  .help-icon {
+    right: 0;
+  }
+
+  .back-icon {
+    left: 0;
   }
 
   .physical-layer-container {
@@ -435,7 +459,7 @@
     justify-content: flex-end;
     overflow: hidden;
   }
-  
+
   .laptop-container {
     position: relative;
     bottom: -10%;

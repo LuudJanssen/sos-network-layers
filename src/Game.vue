@@ -36,6 +36,9 @@
         mutations: {
             setLights(state, lights) {
                 state.lights = lights
+            },
+            explanationShown(state) {
+                state.hadExplanation = true
             }
         }
     };
