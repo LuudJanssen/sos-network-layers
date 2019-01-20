@@ -32,6 +32,11 @@
         },
         getters: {
             finished: state => state.lights.every(light => light === true)
+        },
+        mutations: {
+            setLights(state, lights) {
+                state.lights = lights
+            }
         }
     };
 

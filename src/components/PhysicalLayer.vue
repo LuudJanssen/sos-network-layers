@@ -46,7 +46,7 @@
               <circle fill="#c12d2d" cx="24.02" cy="154.59" r="8.63"></circle>
 
               <!-- The circle lights of the router. X coordinate is dependent of the array index -->
-              <circle v-for="(state, index) in lightStates"
+              <circle v-for="(state, index) in this.$store.state.connection.lights"
                       v-bind:key="index"
                       v-bind:cx="78.14 + index * 17.06"
                       v-bind:fill="state ? '#2faf1c' : '#6d7c6b'"
@@ -57,10 +57,10 @@
             </svg>
 
             <!-- Explanation of the router lights -->
-            <div class="router-explanation py-3 px-3" v-bind:class="{ 'bg-success text-white': finished }">
-              <span v-if="!finished">These should be turned on</span>
+            <div class="router-explanation py-3 px-3" v-bind:class="{ 'bg-success text-white': this.$store.getters['connection/finished'] }">
+              <span v-if="!this.$store.getters['connection/finished']">These should be turned on</span>
 
-              <span v-if="finished">
+              <span v-if="this.$store.getters['connection/finished']">
                 <i class="material-icons align-middle">check</i>
                 <span class="align-middle"> Router works, nice!</span>
               </span>
@@ -84,7 +84,7 @@
               <img src="../assets/laptop.svg" class="laptop">
 
               <!-- Button to enable test mode -->
-              <div class="screen" v-if="!testMode && !finished">
+              <div class="screen" v-if="!testMode && !this.$store.getters['connection/finished']">
                 <b-row class="h-100 align-content-center" align-v="center" align-h="center">
                   <h2 class="pb-3 w-100 text-center">Test what the commands do:</h2>
                   <b-button :size="'lg'" :variant="'warning'" @click="testMode = !testMode">
@@ -94,7 +94,7 @@
               </div>
 
               <!-- Test mode content -->
-              <div class="screen px-3 py-3" v-if="testMode && !finished">
+              <div class="screen px-3 py-3" v-if="testMode && !this.$store.getters['connection/finished']">
                 <b-row class="h-100 align-content-center px-3" align-v="center" align-h="center">
 
                   <b-button :size="'lg'" :variant="'warning'" @click="testMode = !testMode" class="mb-3">
@@ -116,7 +116,7 @@
               </div>
 
               <!-- Finished content -->
-              <div class="screen px-5 py-3" v-if="finished">
+              <div class="screen px-5 py-3" v-if="this.$store.getters['connection/finished']">
                 <b-row class="h-100 align-content-center px-3" align-v="center" align-h="center">
 
                   <h2 class="py-3 w-100 text-center">
@@ -128,7 +128,7 @@
               </div>
 
               <!-- Keyboard buttons -->
-              <div class="keyboard" v-if="!finished">
+              <div class="keyboard" v-if="!this.$store.getters['connection/finished']">
                 <b-row align-h="around" class="h-100 px-3 align-items-center">
                   <b-button v-for="command in commands" v-bind:key="command.name" @click="execute(command)" :variant="testMode ? 'primary' : 'warning'" :size="'lg'">
                     <i class="material-icons align-middle">{{ command.icon }}</i>
@@ -295,21 +295,15 @@
         data() {
             return {
                 name: "PhysicalLayer",
-                lightStates: [true, false, true, false],
                 testStates: [false, false, false, false],
                 testMode: false,
                 commands,
                 executedCommands,
             }
         },
-        computed: {
-            finished() {
-                return this.lightStates.every(state => state === true)
-            }
-        },
         methods: {
             execute(command) {
-                const state = this.testMode ? this.testStates : this.lightStates
+                const state = this.testMode ? this.testStates : this.$store.state.connection.lights
 
                 const executedCommand = new command.class(state, this.testMode)
                 const newState = executedCommand.run()
@@ -317,7 +311,7 @@
                 if (this.testMode) {
                     this.testStates = newState
                 } else {
-                    this.lightStates = newState
+                    this.$store.commit('connection/setLights', newState)
                 }
 
                 this.executedCommands.push(executedCommand)
