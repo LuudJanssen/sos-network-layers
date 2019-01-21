@@ -163,9 +163,6 @@
     background-size: cover;
   }
 
-  .material-icons.md-36 { font-size: 36px; }
-  .material-icons.md-128 { font-size: 128px; }
-
     .box {
       width: 60%;
       height: 100%;

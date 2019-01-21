@@ -495,6 +495,4 @@
     position: absolute;
     bottom: 0;
   }
-
-  .material-icons.md-36 { font-size: 36px; }
 </style>

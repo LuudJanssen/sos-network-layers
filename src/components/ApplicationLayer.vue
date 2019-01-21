@@ -18,7 +18,7 @@
     <b-navbar class="task-list-toggle" type="dark" @click="toggleEditMode()">
       <b-navbar-brand>
         <span class="align-middle">Enter edit mode</span>
-        <i class="material-icons md-36 align-middle pl-3">settings</i>
+        <i class="material-icons align-middle pl-3">settings</i>
       </b-navbar-brand>
     </b-navbar>
   </div>

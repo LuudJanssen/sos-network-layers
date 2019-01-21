@@ -14,6 +14,7 @@
 <script>
   import Vue from "vue";
   import Vuex from "vuex";
+  import './components/materialIcons.css'
   import { Tab, COLOR, colorOptions } from "./components/tabs";
   import { ConnectionStatus } from "./shared/connectionStatus";
 

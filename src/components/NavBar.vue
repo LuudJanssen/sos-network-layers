@@ -4,7 +4,7 @@
       <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
       <b-navbar-brand>
-        <i class="material-icons md-36 d-inline-block pr-2 align-middle">announcement</i>
+        <i class="material-icons d-inline-block pr-2 align-middle">announcement</i>
         <span class="align-middle">sos.io</span>
       </b-navbar-brand>
       <b-collapse is-nav id="nav_collapse">
@@ -14,7 +14,9 @@
                       v-bind:key="tab.id"
                       v-bind:id="tab.id"
                       v-bind:to="editModeEnabled ? '' : tab.route"
-                      v-bind:class="{ 'editable': editModeEnabled, 'd-none': tab.disabled && !editModeEnabled }">
+                      v-bind:class="{ 'editable': editModeEnabled,
+                                      'd-none': tab.disabled && !editModeEnabled,
+                                      'inactive': tab.disabled }">
             <span v-bind:style="{ color: tab.color }">{{ tab.text }}</span>
           </b-nav-item>
         </b-navbar-nav>
@@ -69,6 +71,9 @@
 </script>
 
 <style scoped>
+  .inactive {
+    opacity: 0.5;
+  }
 </style>
 
 
