@@ -12,13 +12,13 @@
 
       <Footer></Footer>
     </div>
-    <div class="task-list-container" v-bind:class="{ 'expanded': showTaskList }">
+    <div class="task-list-container" v-bind:class="{ 'expanded': editModeEnabled }">
       <task-list class="task-list"></task-list>
     </div>
-    <b-navbar class="task-list-toggle" type="dark" @click="toggleTaskList()">
+    <b-navbar class="task-list-toggle" type="dark" @click="toggleEditMode()">
       <b-navbar-brand>
-        <span class="align-middle">Open task list</span>
-        <i class="material-icons md-36 align-middle pl-3">add</i>
+        <span class="align-middle">Enter edit mode</span>
+        <i class="material-icons md-36 align-middle pl-3">settings</i>
       </b-navbar-brand>
     </b-navbar>
   </div>
@@ -54,13 +54,13 @@ export default {
     Footer
   },
   computed: {
-    ...mapState(['showTaskList'])
+    ...mapState(['editModeEnabled'])
   },
   methods: {
     toggle(field) {
       this.$store.commit("toggle", field);
     },
-    ...mapMutations(['toggleTaskList'])
+    ...mapMutations(['toggleEditMode'])
   }
 };
 </script>
@@ -95,9 +95,16 @@ export default {
   .task-list-toggle {
     position: absolute;
     top: 0;
-    right: 0;
     cursor: pointer;
-    user-select: none;
+    user-select: none
+  }
+
+  .task-list-toggle {
+    right: 0;
+  }
+
+  .edit-mode-toggle {
+    right: 10%;
   }
 
 @keyframes fadeInRight {

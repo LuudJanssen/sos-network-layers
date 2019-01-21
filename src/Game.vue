@@ -53,14 +53,14 @@
   const usabilityModule = {
     namespaced: true,
     state: {
-      showTaskList: false
+      editModeEnabled: false
     },
     getters: {
       finished: state => false
     },
     mutations: {
-      toggleTaskList(state) {
-        state.showTaskList = !state.showTaskList
+      toggleEditMode(state) {
+        state.editModeEnabled = !state.editModeEnabled
       }
     }
   }

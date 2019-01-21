@@ -5,8 +5,8 @@
         <i class="material-icons md-36 d-inline-block pr-2 align-middle">list</i>
         <span class="align-middle">Task List</span>
       </b-navbar-brand>
-      <b-navbar-brand class="close-button ml-auto" @click="$store.commit('usability/toggleTaskList')">
-        <span class="align-middle">Close</span>
+      <b-navbar-brand class="close-button ml-auto" @click="$store.commit('usability/toggleEditMode')">
+        <span class="align-middle">Exit</span>
         <i class="material-icons md-36 d-inline-block pl-2 align-middle">close</i>
       </b-navbar-brand>
     </b-navbar>
