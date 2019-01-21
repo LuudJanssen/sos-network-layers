@@ -23,7 +23,7 @@
         </b-row>
       </b-container>
     </b-row>
-    <b-row class="pt-5" align-h="center">
+    <b-row class="bg-light pt-5" align-h="center">
       <b-container class="text-center">
         <h1>Our latest innovations</h1>
 
