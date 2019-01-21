@@ -14,8 +14,8 @@
 <script>
   import Vue from "vue";
   import Vuex from "vuex";
-  import {Tab, colorOptions} from "./components/tabs";
-  import {ConnectionStatus} from "./shared/connectionStatus";
+  import { Tab, COLOR, colorOptions } from "./components/tabs";
+  import { ConnectionStatus } from "./shared/connectionStatus";
 
   Vue.use(Vuex);
 
@@ -50,13 +50,36 @@
     }
   };
 
+  const TAB = {
+    Home: new Tab("home", ["Hello", "Island", "Home", "Welcome"], "Home", colorOptions, "home"),
+    Sos: new Tab("sos", ["Reporting", "Ahhhh", "Report SOS", "Stuck"], "Report SOS", colorOptions, "form"),
+    AboutUs:  new Tab("aboutUS", ["History", "About us", "We", "Info about us"], "About us", colorOptions, ""),
+    CoreValues:  new Tab("coreValues", ["Core values", "Tell me more", "Interesting", "More"], "Core values", colorOptions, "")
+  }
+
+
   const usabilityModule = {
     namespaced: true,
     state: {
-      editModeEnabled: false
+      editModeEnabled: false,
+      tabs: [TAB.Home, TAB.Sos, TAB.AboutUs, TAB.CoreValues]
     },
     getters: {
-      finished: state => false
+      finished: (state, getters) => {
+        return getters.correctTabVisibility &&
+               getters.correctTabColors &&
+               getters.correctTabNames
+      },
+      correctTabVisibility: () => {
+        return !TAB.Home.disabled && !TAB.Sos.disabled && TAB.AboutUs.disabled && TAB.CoreValues.disabled
+      },
+      correctTabColors: (state) => {
+        return state.tabs.filter(tab => tab !== TAB.Sos).every(tab => tab.color === COLOR.Normal.value) &&
+               TAB.Sos.color === COLOR.Orange.value
+      },
+      correctTabNames: (state) => {
+        return state.tabs.filter(tab => !tab.disabled).every(tab => tab.text === tab.correctText)
+      }
     },
     mutations: {
       toggleEditMode(state) {
@@ -80,51 +103,6 @@
         header2: "black",
         header3: "black"
       },
-      tabs: [
-        new Tab(
-            "tab1",
-            ["Island", "Home", "Welcome", "Hello"],
-            colorOptions,
-            "home"
-        ),
-        new Tab(
-            "tab2",
-            ["Reporting", "Ahhhh", "Report SOS", "Stuck"],
-            colorOptions,
-            "form"
-        ),
-        new Tab(
-            "tab3",
-            ["History", "About us", "We", "Info about us"],
-            colorOptions,
-            ""
-        ),
-        new Tab(
-            "tab4",
-            ["Core values", "Tell me more", "Interesting", "More"],
-            colorOptions,
-            ""
-        )
-      ],
-      tabsData: [
-        //since I cannot read values of the class properly, this is added to circumvent reading from the class
-        {
-          color: colorOptions[0],
-          text: "Island"
-        },
-        {
-          color: colorOptions[0],
-          text: "Island"
-        },
-        {
-          color: colorOptions[0],
-          text: "Island"
-        },
-        {
-          color: colorOptions[0],
-          text: "Island"
-        }
-      ],
       form: {
         showName: true,
         showAd: true,
