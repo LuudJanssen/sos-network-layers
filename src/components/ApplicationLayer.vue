@@ -2,11 +2,11 @@
   is the applciation layer component which contains the application layer game
 -->
 <template>
-  <div class="page-container">
-    <div class="site-content">
-      <nav-bar></nav-bar>
+  <div class="page-container h-100">
+    <div class="site-content h-100 d-flex flex-column">
+      <nav-bar class="flex-shrink-0"></nav-bar>
 
-      <b-container fluid>
+      <b-container fluid class="d-flex flex-column flex-grow-1">
         <router-view></router-view>
       </b-container>
 
@@ -102,48 +102,4 @@ export default {
   .task-list-toggle {
     right: 0;
   }
-
-  .edit-mode-toggle {
-    right: 10%;
-  }
-
-@keyframes fadeInRight {
-  0% {
-    transform: translateX(35px);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-@keyframes fadeInLeft {
-  0% {
-    transform: translateX(-35px);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-.application-layer {
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  padding-top: 20px;
-}
-
-.taskToggleOff {
-  position: fixed;
-  top: 10px;
-  right: 0px;
-  animation-name: fadeInLeft;
-  animation-duration: 1s;
-}
-
-.taskToggleOn {
-  position: fixed;
-  top: 10px;
-  right: 350px;
-  animation-name: fadeInRight;
-  animation-duration: 1s;
-}
 </style>

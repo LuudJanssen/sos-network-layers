@@ -22,23 +22,4 @@ export class Tab {
     this.route = route
     this.id = id
   }
-
-  toggleText() {
-    this.text = this.toggleOption(this.textOptions, this.text)
-  }
-
-  toggleColor() {
-    this.color = this.toggleOption(this.colorOptions, this.color)
-  }
-
-  toggleOption(options, option) {
-    const currentIndex = options.indexOf(option)
-    let newIndex = currentIndex + 1
-
-    if (options.length === newIndex) {
-      newIndex = 0
-    }
-
-    return options[newIndex]
-  }
 }

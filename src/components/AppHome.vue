@@ -131,8 +131,4 @@
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../assets/sos-io-island-man.jpg") no-repeat center bottom;
     background-size: cover;
   }
-
-  .inactive {
-    opacity: 0.5;
-  }
 </style>

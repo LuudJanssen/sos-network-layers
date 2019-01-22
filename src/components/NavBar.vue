@@ -71,9 +71,6 @@
 </script>
 
 <style scoped>
-  .inactive {
-    opacity: 0.5;
-  }
 </style>
 
 
