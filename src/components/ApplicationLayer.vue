@@ -22,7 +22,54 @@
       </b-navbar-brand>
     </b-navbar>
 
-    <router-link tag="i" to="/island" class="back-icon material-icons md-36 text-light px-3 py-3 position-absolute">arrow_back</router-link>
+    <b-navbar class="back-icon" type="dark">
+      <router-link tag="b-navbar-brand" to="/island">
+        <i class="material-icons align-middle pr-3">arrow_back</i>
+        <span class="align-middle">Back</span>
+      </router-link>
+      <b-navbar-brand @click="showExplanation()">
+        <i class="material-icons align-middle pr-3">help</i>
+      </b-navbar-brand>
+    </b-navbar>
+
+    <!-- Explanation modal -->
+    <b-modal @hidden="explanationShown()"
+             ref="modalExplanation"
+             title="Please, fix this bloated site"
+             centered
+             ok-only>
+      <p>
+        Bob finally has an internet connection and he can connect to sos.io. However, this site is full of things that
+        distract Bob from his goal: Fill in the emergency form so they can come get him.
+      </p>
+      <p>
+        Since you, as a prospective computer science student, have knowledge about what is necessary information and
+        what is not and how to let things stand out, you can fix this for him!
+      </p>
+      <p>
+        Look around the website and spot the mistakes. You can enable edit mode on the top right to change parts of the
+        site.
+      </p>
+      <p>
+        Try to create a usable site, good luck!
+      </p>
+    </b-modal>
+
+    <b-modal ref="finishedModal" title="YOU DID IT!" centered ok-only>
+      <p>
+        Sos.io just received an inquiry from Bob to come and get them, he's saved! And that's all because of you.
+      </p>
+      <p>
+        You fixed his internet connection and you made it easy for Bob to use the site, well done!
+      </p>
+      <p>
+        On a serious note, if you thought this were fun exercises, using logic and thinking about usability design;
+        that's what computer science is about. Without you knowing, you've already learned about the different layers of
+        the internet and common practices for usability design. During the computer science study you will further dive
+        into these subjects and also use scientific proof in the field of logic and psychology to see why your
+        adaptations worked the way they did.
+      </p>
+    </b-modal>
   </div>
 </template>
 
@@ -32,7 +79,7 @@ import Footer from "./Footer";
 import TaskList from "./TaskList";
 import { createNamespacedHelpers } from 'vuex'
 
-const { mapMutations, mapState } = createNamespacedHelpers('usability');
+const { mapMutations, mapState, mapGetters } = createNamespacedHelpers('usability');
 
 export default {
   name: "ApplicationLayer",
@@ -42,9 +89,28 @@ export default {
     Footer
   },
   computed: {
-    ...mapState(['editModeEnabled'])
+    ...mapState(['editModeEnabled', 'hadExplanation']),
+    ...mapGetters(['finished'])
   },
-  methods: mapMutations(['toggleEditMode'])
+  methods: {
+    ...mapMutations(['toggleEditMode', 'explanationShown']),
+    showExplanation() {
+      this.$refs.modalExplanation.show();
+    }
+  },
+  mounted() {
+    // This shows the explanation pop-up on start
+    if (!this.hadExplanation) {
+      this.showExplanation()
+    }
+  },
+  watch: {
+    finished: function (finished) {
+      if (finished) {
+        this.$refs.finishedModal.show();
+      }
+    }
+  }
 };
 </script>
 
@@ -76,6 +142,7 @@ export default {
     height: 100%;
   }
 
+  .back-icon,
   .task-list-toggle {
     position: absolute;
     top: 0;
@@ -85,5 +152,9 @@ export default {
 
   .task-list-toggle {
     right: 0;
+  }
+
+  .back-icon {
+    left: 0;
   }
 </style>

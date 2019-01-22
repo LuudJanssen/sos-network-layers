@@ -63,6 +63,7 @@
     namespaced: true,
     state: {
       formItems,
+      hadExplanation: false,
       editModeEnabled: false,
       tabs: [TAB.Home, TAB.Sos, TAB.AboutUs, TAB.CoreValues],
       buttonSos: false,
@@ -101,6 +102,9 @@
     mutations: {
       toggleEditMode(state) {
         state.editModeEnabled = !state.editModeEnabled
+      },
+      explanationShown(state) {
+        state.hadExplanation = true
       }
     }
   }

@@ -43,8 +43,8 @@
                           required></b-form-input>
           </b-form-group>
 
-          <b-popover v-for="formItem in formItems"
-                     v-bind:key="formItem.id"
+          <b-popover v-for="(formItem, index) in formItems"
+                     v-bind:key="index"
                      v-bind:target="formItem.id"
                      v-bind:disabled="!editModeEnabled"
                      triggers="click blur"
