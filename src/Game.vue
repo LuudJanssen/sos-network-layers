@@ -16,6 +16,7 @@
   import Vuex from "vuex";
   import './components/materialIcons.css'
   import { Tab, COLOR, colorOptions } from "./components/tabs";
+  import { formItems, nameFormItem, firstAddressFormItem, secondAddressFormItem, cityFormItem, countryFormItem, longitudeFormItem, latitudeFormItem } from "./components/formItems";
   import { ConnectionStatus } from "./shared/connectionStatus";
 
   Vue.use(Vuex);
@@ -58,16 +59,17 @@
     CoreValues:  new Tab("coreValues", ["Core values", "Tell me more", "Interesting", "More"], "Core values", colorOptions, "")
   }
 
-
-
   const usabilityModule = {
     namespaced: true,
     state: {
+      formItems,
       editModeEnabled: false,
       tabs: [TAB.Home, TAB.Sos, TAB.AboutUs, TAB.CoreValues],
       buttonSos: false,
       innovationsSectionRemoved: false,
-      emergencySectionRemoved: false
+      emergencySectionRemoved: false,
+      formSectionRemoved: false,
+      emergencyFormSectionRemoved: false
     },
     getters: {
       finished: (state, getters) => {
@@ -75,7 +77,8 @@
                getters.correctTabColors &&
                getters.correctTabNames &&
                state.buttonSos &&
-               getters.correctSectionsRemoved
+               getters.correctSectionsRemoved &&
+               getters.correctFormItemsRemoved
       },
       correctTabVisibility: () => {
         return !TAB.Home.disabled && !TAB.Sos.disabled && TAB.AboutUs.disabled && TAB.CoreValues.disabled
@@ -87,7 +90,13 @@
       correctTabNames: (state) => {
         return state.tabs.filter(tab => !tab.disabled).every(tab => tab.text === tab.correctText)
       },
-      correctSectionsRemoved: (state) => state.innovationsSectionRemoved && !state.emergencySectionRemoved
+      correctSectionsRemoved: (state) => state.innovationsSectionRemoved && !state.emergencySectionRemoved,
+      correctFormItemsRemoved: (state) => {
+        const correctVisible = [longitudeFormItem, latitudeFormItem].every(formItem => !formItem.disabled)
+        const incorrectInvisible = [firstAddressFormItem, secondAddressFormItem, cityFormItem, countryFormItem].every(formItem => formItem.disabled)
+
+        return correctVisible && incorrectInvisible && state.emergencyFormSectionRemoved
+      }
     },
     mutations: {
       toggleEditMode(state) {

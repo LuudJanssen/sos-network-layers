@@ -22,6 +22,11 @@
             [buttonSos, 'Useful call-to-action button'],
             [correctSectionsRemoved, 'Remove unnecessary sections']
           ]
+        ], [
+          'Emergency form', [
+            [formSectionRemoved, 'Remove unnecessary text'],
+            [correctFormItemsRemoved, 'Remove unnecessary form items']
+          ]
         ]
       ]"
          v-bind:key="collectionTitle">
@@ -42,8 +47,8 @@
   export default {
     name: 'task-list',
     computed: {
-      ...mapGetters(['finished', 'correctTabVisibility', 'correctTabColors', 'correctTabNames', 'correctSectionsRemoved']),
-      ...mapState(['buttonSos'])
+      ...mapGetters(['finished', 'correctTabVisibility', 'correctTabColors', 'correctTabNames', 'correctSectionsRemoved', 'correctFormItemsRemoved']),
+      ...mapState(['buttonSos', 'formSectionRemoved'])
     },
     methods: mapMutations(['toggleEditMode'])
   }
