@@ -117,8 +117,6 @@
     cursor: pointer;
   }
 
-  .material-icons.md-36 { font-size: 36px; }
-
   .introduction {
     background-color: #4194b5;
   }
