@@ -16,7 +16,7 @@
   import Vuex from "vuex";
   import './components/materialIcons.css'
   import { Tab, COLOR, colorOptions } from "./components/tabs";
-  import { formItems, nameFormItem, firstAddressFormItem, secondAddressFormItem, cityFormItem, countryFormItem, longitudeFormItem, latitudeFormItem } from "./components/formItems";
+  import { formItems, firstAddressFormItem, secondAddressFormItem, cityFormItem, countryFormItem, longitudeFormItem, latitudeFormItem } from "./components/formItems";
   import { ConnectionStatus } from "./shared/connectionStatus";
 
   Vue.use(Vuex);
@@ -111,29 +111,6 @@
       connection: connectionModule,
       usability: usabilityModule
     },
-    state: {
-      color: {
-        text1: "black",
-        text2: "black",
-        text3: "black",
-        header1: "black",
-        header2: "black",
-        header3: "black"
-      },
-      form: {
-        showName: true,
-        showAd: true,
-        showLong: true,
-        showLat: true,
-        showPrio: true
-      },
-      taskList: {
-        textCheck: false,
-        sosCheck: false,
-        formCheck: false,
-        complete: false
-      }
-    },
     getters: {
       connectionStatus: (state, getters) => {
         if (getters['usability/finished']) {
@@ -147,62 +124,6 @@
         return ConnectionStatus.NO_CONNECTION
       }
     },
-    mutations: {
-      toggle(state, field) {
-        if (field.substring(0, 6) === "showTa") {
-          state.showTaskList = !state.showTaskList;
-        } else if (field.substring(0, 6) === "showNa") {
-          state.form.showName = !state.form.showName;
-        } else if (field.substring(0, 6) === "showAd") {
-          state.form.showAd = !state.form.showAd;
-        } else if (field.substring(0, 6) === "showLo") {
-          state.form.showLong = !state.form.showLong;
-        } else if (field.substring(0, 6) === "showLa") {
-          state.form.showLat = !state.form.showlat;
-        } else if (field.substring(0, 6) === "showPr") {
-          state.form.showPrio = !state.form.showPrio;
-        }
-      },
-      changeColor(state, field) {
-        if (field.substring(0, 4) === "text") {
-          if (field === "text1") {
-            state.color.text1 =
-                state.color.text1 === "black" ? "yellow" : "black";
-          } else if (field === "text2") {
-            state.color.text2 =
-                state.color.text2 === "black" ? "yellow" : "black";
-          } else if (field === "text3") {
-            state.color.text3 =
-                state.color.text3 === "black" ? "yellow" : "black";
-          }
-        } else if (field.substring(0, 4) === "head") {
-          if (field === "header1") {
-            state.color.header1 =
-                state.color.header1 === "black" ? "yellow" : "black";
-          } else if (field === "header2") {
-            state.color.header2 =
-                state.color.header2 === "black" ? "yellow" : "black";
-          } else if (field === "header3") {
-            state.color.header3 =
-                state.color.header3 === "black" ? "yellow" : "black";
-          }
-        }
-      },
-      changeConnectionStatus(state, status) {
-        state.connectionStatus = status;
-      },
-      set(state, param) {
-        if (param.field.substring(0, 6) === "textCh") {
-          state.taskList.textCheck = param.value;
-        } else if (param.field.substring(0, 6) === "sosChe") {
-          state.taskList.sosCheck = param.value;
-        } else if (param.field.substring(0, 6) === "formCh") {
-          state.taskList.formCheck = param.value;
-        } else if (param.field.substring(0, 6) === "comple") {
-          state.taskList.complete = param.value;
-        }
-      }
-    }
   });
 
   /**

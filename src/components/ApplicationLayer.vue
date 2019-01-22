@@ -21,21 +21,9 @@
         <i class="material-icons align-middle pl-3">settings</i>
       </b-navbar-brand>
     </b-navbar>
+
+    <router-link tag="i" to="/island" class="back-icon material-icons md-36 text-light px-3 py-3 position-absolute">arrow_back</router-link>
   </div>
-  <!--<div class="application-layer">
-    <div>
-      <h1>Application Layer</h1>
-      <div
-        v-bind:class="{taskToggle, 'taskToggleOn':this.$store.state.showTaskList, 'taskToggleOff':!this.$store.state.showTaskList}"
-        @click="toggle('showTaskList')"
-      >
-        <b-button>{{ this.$store.state.showTaskList ? 'Close Tasks' : 'Open Tasks'}} &#128466;</b-button>
-      </div>
-      <NavBar></NavBar>
-      <router-view/>
-    </div>
-    <TaskList></TaskList>
-  </div>-->
 </template>
 
 <script>
@@ -56,12 +44,7 @@ export default {
   computed: {
     ...mapState(['editModeEnabled'])
   },
-  methods: {
-    toggle(field) {
-      this.$store.commit("toggle", field);
-    },
-    ...mapMutations(['toggleEditMode'])
-  }
+  methods: mapMutations(['toggleEditMode'])
 };
 </script>
 
