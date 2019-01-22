@@ -17,6 +17,10 @@
             [correctTabColors, 'Let the SOS form menu item stand out'],
             [correctTabNames, 'Use logical menu item texts']
           ]
+        ], [
+          'Landing page', [
+            [buttonSos, 'Useful call-to-action button']
+          ]
         ]
       ]"
          v-bind:key="collectionTitle">
@@ -32,11 +36,14 @@
 <script>
   import { createNamespacedHelpers } from 'vuex'
 
-  const { mapMutations, mapGetters } = createNamespacedHelpers('usability');
+  const { mapMutations, mapGetters, mapState } = createNamespacedHelpers('usability');
 
   export default {
     name: 'task-list',
-    computed: mapGetters(['finished', 'correctTabVisibility', 'correctTabColors', 'correctTabNames']),
+    computed: {
+      ...mapGetters(['finished', 'correctTabVisibility', 'correctTabColors', 'correctTabNames']),
+      ...mapState(['buttonSos'])
+    },
     methods: mapMutations(['toggleEditMode'])
   }
 </script>

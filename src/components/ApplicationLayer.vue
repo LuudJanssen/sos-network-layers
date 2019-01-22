@@ -44,7 +44,7 @@ import Footer from "./Footer";
 import TaskList from "./TaskList";
 import { createNamespacedHelpers } from 'vuex'
 
-const { mapMutations, mapState, mapGetters } = createNamespacedHelpers('usability');
+const { mapMutations, mapState } = createNamespacedHelpers('usability');
 
 export default {
   name: "ApplicationLayer",

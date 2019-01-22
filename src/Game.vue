@@ -63,7 +63,8 @@
     namespaced: true,
     state: {
       editModeEnabled: false,
-      tabs: [TAB.Home, TAB.Sos, TAB.AboutUs, TAB.CoreValues]
+      tabs: [TAB.Home, TAB.Sos, TAB.AboutUs, TAB.CoreValues],
+      buttonSos: false
     },
     getters: {
       finished: (state, getters) => {
@@ -75,7 +76,7 @@
         return !TAB.Home.disabled && !TAB.Sos.disabled && TAB.AboutUs.disabled && TAB.CoreValues.disabled
       },
       correctTabColors: (state) => {
-        return state.tabs.filter(tab => tab !== TAB.Sos).every(tab => tab.color === COLOR.Normal.value) &&
+        return state.tabs.filter(tab => tab !== TAB.Sos && !tab.disabled).every(tab => tab.color === COLOR.Normal.value) &&
                TAB.Sos.color === COLOR.Orange.value
       },
       correctTabNames: (state) => {
