@@ -19,7 +19,8 @@
           ]
         ], [
           'Landing page', [
-            [buttonSos, 'Useful call-to-action button']
+            [buttonSos, 'Useful call-to-action button'],
+            [correctSectionsRemoved, 'Remove unnecessary sections']
           ]
         ]
       ]"
@@ -41,7 +42,7 @@
   export default {
     name: 'task-list',
     computed: {
-      ...mapGetters(['finished', 'correctTabVisibility', 'correctTabColors', 'correctTabNames']),
+      ...mapGetters(['finished', 'correctTabVisibility', 'correctTabColors', 'correctTabNames', 'correctSectionsRemoved']),
       ...mapState(['buttonSos'])
     },
     methods: mapMutations(['toggleEditMode'])

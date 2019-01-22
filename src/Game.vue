@@ -64,13 +64,17 @@
     state: {
       editModeEnabled: false,
       tabs: [TAB.Home, TAB.Sos, TAB.AboutUs, TAB.CoreValues],
-      buttonSos: false
+      buttonSos: false,
+      innovationsSectionRemoved: false,
+      emergencySectionRemoved: false
     },
     getters: {
       finished: (state, getters) => {
         return getters.correctTabVisibility &&
                getters.correctTabColors &&
-               getters.correctTabNames
+               getters.correctTabNames &&
+               state.buttonSos &&
+               getters.correctSectionsRemoved
       },
       correctTabVisibility: () => {
         return !TAB.Home.disabled && !TAB.Sos.disabled && TAB.AboutUs.disabled && TAB.CoreValues.disabled
@@ -81,7 +85,8 @@
       },
       correctTabNames: (state) => {
         return state.tabs.filter(tab => !tab.disabled).every(tab => tab.text === tab.correctText)
-      }
+      },
+      correctSectionsRemoved: (state) => state.innovationsSectionRemoved && !state.emergencySectionRemoved
     },
     mutations: {
       toggleEditMode(state) {

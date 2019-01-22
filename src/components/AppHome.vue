@@ -44,7 +44,11 @@
         </b-row>
       </b-container>
     </b-row>
-    <b-row class="bg-light pt-5" align-h="center">
+    <b-row class="bg-light pt-5 editable-inline" align-h="center"
+           v-bind:class="{ 'editable': editModeEnabled,
+                           'inactive': innovationsSectionRemoved && editModeEnabled,
+                           'd-none': innovationsSectionRemoved && !editModeEnabled }"
+           id="innovations_section">
       <b-container class="text-center">
         <h1>Our latest innovations</h1>
 
@@ -63,8 +67,19 @@
           </b-col>
         </b-row>
       </b-container>
+
+      <b-popover target="innovations_section"
+                 triggers="click blur"
+                 placement="bottom"
+                 v-bind:disabled="!editModeEnabled">
+        <b-form-checkbox v-model="$store.state.usability.innovationsSectionRemoved">Hide section</b-form-checkbox>
+      </b-popover>
     </b-row>
-    <b-row class="bg-warning text-white py-5">
+    <b-row class="bg-warning text-white py-5 editable-inline editable-grey"
+           v-bind:class="{ 'editable': editModeEnabled,
+                           'inactive': emergencySectionRemoved && editModeEnabled,
+                           'd-none': emergencySectionRemoved && !editModeEnabled }"
+           id="emergency_section">
       <b-container class="text-center">
         <h1>In case of an emergency</h1>
 
@@ -89,6 +104,13 @@
           </b-col>
         </b-row>
       </b-container>
+
+      <b-popover target="emergency_section"
+                 triggers="click blur"
+                 placement="bottom"
+                 v-bind:disabled="!editModeEnabled">
+        <b-form-checkbox v-model="$store.state.usability.emergencySectionRemoved">Hide section</b-form-checkbox>
+      </b-popover>
     </b-row>
   </main>
 </template>
@@ -100,7 +122,7 @@
 
   export default {
     name: 'AppHome',
-    computed: mapState(['buttonSos', 'editModeEnabled']),
+    computed: mapState(['buttonSos', 'editModeEnabled', 'innovationsSectionRemoved', 'emergencySectionRemoved']),
   }
 </script>
 
@@ -108,5 +130,9 @@
   .island-backdrop {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../assets/sos-io-island-man.jpg") no-repeat center bottom;
     background-size: cover;
+  }
+
+  .inactive {
+    opacity: 0.5;
   }
 </style>
