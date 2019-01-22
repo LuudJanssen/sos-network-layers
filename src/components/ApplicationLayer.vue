@@ -1,16 +1,16 @@
 <!--
-  is the applciation layer component which contains the application layer game
+  is the application layer component which contains the application layer game
 -->
 <template>
-  <div class="page-container h-100">
-    <div class="site-content h-100 d-flex flex-column">
+  <div class="page-container">
+    <div class="site-content d-flex flex-column">
       <nav-bar class="flex-shrink-0"></nav-bar>
 
       <b-container fluid class="d-flex flex-column flex-grow-1">
         <router-view></router-view>
       </b-container>
 
-      <Footer></Footer>
+      <Footer class="flex-shrink-0"></Footer>
     </div>
     <div class="task-list-container" v-bind:class="{ 'expanded': editModeEnabled }">
       <task-list class="task-list"></task-list>
@@ -68,6 +68,7 @@ export default {
 <style scoped>
   .page-container {
     display: flex;
+    min-height: 100%;
   }
 
   .site-content {
