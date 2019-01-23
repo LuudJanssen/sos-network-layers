@@ -47,7 +47,7 @@
         what is not and how to let things stand out, you can fix this for him!
       </p>
       <p>
-        Look around the website and spot the mistakes. You can enable edit mode on the top right to change parts of the
+        Look around the website and spot the mistakes. You can <b>enable edit mode</b> on the top right to change parts of the
         site.
       </p>
       <p>
