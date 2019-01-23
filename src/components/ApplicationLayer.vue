@@ -4,9 +4,9 @@
 <template>
   <div class="page-container">
     <div class="site-content d-flex flex-column">
-      <nav-bar class="flex-shrink-0"></nav-bar>
+      <nav-bar class="flex-shrink-0 position-fixed w-100 navbar"></nav-bar>
 
-      <b-container fluid class="d-flex flex-column flex-grow-1">
+      <b-container fluid class="d-flex flex-column flex-grow-1 mt-5">
         <router-view></router-view>
       </b-container>
 
@@ -125,7 +125,7 @@ export default {
   }
 
   .task-list-container {
-    z-index: 1;
+    z-index: 100;
     flex: 0 0 0;
     box-shadow: 0 0 0 rgba(0,0,0,0), 0 0 0 rgba(0,0,0,0);
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
@@ -144,7 +144,7 @@ export default {
 
   .back-icon,
   .task-list-toggle {
-    position: absolute;
+    position: fixed;
     top: 0;
     cursor: pointer;
     user-select: none
@@ -156,5 +156,9 @@ export default {
 
   .back-icon {
     left: 0;
+  }
+
+  .navbar {
+    z-index: 99;
   }
 </style>
