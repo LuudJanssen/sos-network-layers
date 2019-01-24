@@ -79,7 +79,8 @@
                getters.correctTabNames &&
                state.buttonSos &&
                getters.correctSectionsRemoved &&
-               getters.correctFormItemsRemoved
+               getters.correctFormItemsRemoved &&
+               state.formSectionRemoved
       },
       correctTabVisibility: () => {
         return !TAB.Home.disabled && !TAB.Sos.disabled && TAB.AboutUs.disabled && TAB.CoreValues.disabled

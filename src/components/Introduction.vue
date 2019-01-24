@@ -78,7 +78,7 @@
     new Game("Usability", 'usability', '/usability'),
     new Game("Security", 'connection', '', false),
     new Game("Routing", 'connection', '', false),
-    new Game("Data Transport", 'connection', '', false),
+    new Game("Network", 'connection', '', false),
     new Game("Connection", 'connection', '/connection')
   ];
 
